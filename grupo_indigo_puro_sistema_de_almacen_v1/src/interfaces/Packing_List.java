@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Packing_List extends JFrame {
 
@@ -51,7 +54,7 @@ public class Packing_List extends JFrame {
 	public Packing_List() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Packing_List.class.getResource("/imagenes/lista.png")));
 		setTitle("PACKING LIST");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 906, 588);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -222,5 +225,21 @@ public class Packing_List extends JFrame {
 		textField_10.setColumns(10);
 		textField_10.setBounds(227, 488, 217, 35);
 		contentPane.add(textField_10);
+		
+		JButton btn_menu_principal = new JButton("MENU PRINCIPAL");
+		btn_menu_principal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu_Principal mp = new Menu_Principal();
+				dispose();
+				mp.setVisible(true);
+				mp.setLocationRelativeTo(null);
+				mp.requestFocus();
+				mp.actualizarFecha();
+				mp.iniciarHiloActualizacionHora();
+			}
+		});
+		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 13));
+		btn_menu_principal.setBounds(469, 11, 150, 36);
+		contentPane.add(btn_menu_principal);
 	}
 }

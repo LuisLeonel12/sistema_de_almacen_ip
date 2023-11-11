@@ -20,6 +20,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -28,6 +30,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Registro_de_Entradas extends JFrame {
 
@@ -69,10 +73,10 @@ public class Registro_de_Entradas extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Registro_de_Entradas.class.getResource("/imagenes/registro.png")));
 		setResizable(false);
 		setTitle("REGISTRO DE ENTRADAS");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 861, 528);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(15, 117, 192));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 
 		setContentPane(contentPane);
@@ -80,15 +84,28 @@ public class Registro_de_Entradas extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("CODIGO TELA");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1.setBounds(10, 58, 131, 36);
+		lblNewLabel_1.setBounds(10, 58, 144, 36);
 		contentPane.add(lblNewLabel_1);
 		
 		txt_codigo_tela = new JTextField();
-		txt_codigo_tela.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_codigo_tela.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//este codigo hace que cada jtextfiel acepte solo numeros
+				
+				char validar = e.getKeyChar();
+				
+				if(Character.isLetter(validar)){
+					getToolkit().beep();
+					e.consume();
+				}
+			}
+		});
+		txt_codigo_tela.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_codigo_tela.setColumns(10);
-		txt_codigo_tela.setBounds(152, 58, 292, 36);
+		txt_codigo_tela.setBounds(164, 58, 280, 36);
 		contentPane.add(txt_codigo_tela);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("FOTOS DE TELA");
@@ -101,93 +118,93 @@ public class Registro_de_Entradas extends JFrame {
 		
 		JLabel lblNewLabel_1_1 = new JLabel("NOMBRE");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_1.setBounds(10, 105, 131, 36);
+		lblNewLabel_1_1.setBounds(10, 105, 144, 36);
 		contentPane.add(lblNewLabel_1_1);
 		
 		txt_nombre = new JTextField();
-		txt_nombre.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_nombre.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_nombre.setColumns(10);
-		txt_nombre.setBounds(152, 105, 292, 36);
+		txt_nombre.setBounds(164, 105, 280, 36);
 		contentPane.add(txt_nombre);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("PROVEEDOR");
 		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_2.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_2.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_2.setBounds(10, 152, 131, 36);
+		lblNewLabel_1_2.setBounds(10, 152, 144, 36);
 		contentPane.add(lblNewLabel_1_2);
 		
 		txt_proveedor = new JTextField();
-		txt_proveedor.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_proveedor.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_proveedor.setColumns(10);
-		txt_proveedor.setBounds(152, 152, 292, 36);
+		txt_proveedor.setBounds(164, 152, 280, 36);
 		contentPane.add(txt_proveedor);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("PESO");
 		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_3.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_3.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_3.setBounds(10, 199, 131, 36);
+		lblNewLabel_1_3.setBounds(10, 199, 144, 36);
 		contentPane.add(lblNewLabel_1_3);
 		
 		txt_peso = new JTextField();
-		txt_peso.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_peso.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_peso.setColumns(10);
-		txt_peso.setBounds(152, 199, 292, 36);
+		txt_peso.setBounds(164, 199, 280, 36);
 		contentPane.add(txt_peso);
 		
 		JLabel lblNewLabel_1_4 = new JLabel("ANCHOS CORTABLES");
 		lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_4.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_4.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_4.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_4.setBounds(10, 246, 131, 36);
+		lblNewLabel_1_4.setBounds(10, 246, 144, 36);
 		contentPane.add(lblNewLabel_1_4);
 		
 		txt_anchos_cortables = new JTextField();
-		txt_anchos_cortables.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_anchos_cortables.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_anchos_cortables.setColumns(10);
-		txt_anchos_cortables.setBounds(152, 246, 292, 36);
+		txt_anchos_cortables.setBounds(164, 246, 280, 36);
 		contentPane.add(txt_anchos_cortables);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("CARACTERISTICAS");
 		lblNewLabel_1_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_5.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_5.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_5.setBounds(10, 293, 131, 36);
+		lblNewLabel_1_5.setBounds(10, 293, 144, 36);
 		contentPane.add(lblNewLabel_1_5);
 		
 		txt_caracteristicas = new JTextField();
-		txt_caracteristicas.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_caracteristicas.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_caracteristicas.setColumns(10);
-		txt_caracteristicas.setBounds(152, 293, 292, 36);
+		txt_caracteristicas.setBounds(164, 293, 280, 36);
 		contentPane.add(txt_caracteristicas);
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("FECHA DE ENTRADA");
 		lblNewLabel_1_5_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_5_1.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_5_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_5_1.setBounds(10, 340, 131, 35);
+		lblNewLabel_1_5_1.setBounds(10, 340, 144, 35);
 		contentPane.add(lblNewLabel_1_5_1);
 		
 		txt_fecha_entrada = new JTextField();
-		txt_fecha_entrada.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_fecha_entrada.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_fecha_entrada.setColumns(10);
-		txt_fecha_entrada.setBounds(152, 340, 292, 35);
+		txt_fecha_entrada.setBounds(164, 340, 280, 35);
 		contentPane.add(txt_fecha_entrada);
 		
 		JLabel lblNewLabel_1_5_2 = new JLabel("HORA DE ENTRADA");
 		lblNewLabel_1_5_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_5_2.setFont(new Font("Arial", Font.BOLD, 12));
+		lblNewLabel_1_5_2.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1_5_2.setBounds(10, 386, 131, 36);
+		lblNewLabel_1_5_2.setBounds(10, 386, 144, 36);
 		contentPane.add(lblNewLabel_1_5_2);
 		
 		txt_hora_entrada = new JTextField();
-		txt_hora_entrada.setFont(new Font("Arial", Font.BOLD, 11));
+		txt_hora_entrada.setFont(new Font("Arial", Font.BOLD, 12));
 		txt_hora_entrada.setColumns(10);
-		txt_hora_entrada.setBounds(152, 386, 292, 36);
+		txt_hora_entrada.setBounds(164, 386, 280, 36);
 		contentPane.add(txt_hora_entrada);
 		
 		JButton btn_agregar_imagen1 = new JButton("AGREGAR IMAGENES");
@@ -217,13 +234,19 @@ public class Registro_de_Entradas extends JFrame {
 		contentPane.add(btn_agregar_imagen2);
 		
 		JButton btnNewButton = new JButton("INGRESAR TELA");
+		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
+		btnNewButton.setBounds(43, 447, 131, 31);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//CONDICONAL PARA REVISAR SI EL MATERIAL A INGRESADO CORRECTAMENTE
+				
+				JOptionPane.showMessageDialog(null, "MATERIAL AGREGADO CORRECTAMENTE");
 				requestFocus();
 			}
 		});
-		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
-		btnNewButton.setBounds(43, 447, 131, 31);
+		
 		contentPane.add(btnNewButton);
 		
 		JButton btnLimpiarCampos = new JButton("LIMPIAR CAMPOS");

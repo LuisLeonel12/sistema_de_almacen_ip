@@ -44,8 +44,8 @@ public class Vista_Base_de_Datos extends JFrame {
 	public Vista_Base_de_Datos() {
 		setTitle("BASE DE DATOS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Vista_Base_de_Datos.class.getResource("/imagenes/bd.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 780, 528);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(100, 100, 909, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 
@@ -56,12 +56,12 @@ public class Vista_Base_de_Datos extends JFrame {
 		lblBaseDeDatos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBaseDeDatos.setFont(new Font("Arial", Font.BOLD, 16));
 		lblBaseDeDatos.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblBaseDeDatos.setBounds(169, 11, 423, 36);
+		lblBaseDeDatos.setBounds(181, 11, 532, 36);
 		contentPane.add(lblBaseDeDatos);
 		
 		tbl_base_de_datos = new JTable();
 		tbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0)));
-		tbl_base_de_datos.setBounds(10, 58, 744, 420);
+		tbl_base_de_datos.setBounds(10, 58, 873, 592);
 		contentPane.add(tbl_base_de_datos);
 		
 		JButton btn_menu_principal = new JButton("MENU PRINCIPAL");

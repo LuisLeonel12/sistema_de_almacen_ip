@@ -61,11 +61,12 @@ public class Menu_Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Menu_Principal() {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Principal.class.getResource("/imagenes/casa.png")));
 		setTitle("MENU PRINCIPAL");
-		setBounds(100, 100, 846, 490);
+		setBounds(100, 100, 861, 490);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
