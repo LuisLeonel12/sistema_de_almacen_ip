@@ -87,6 +87,8 @@ public class Menu_Principal extends JFrame {
 				re.setVisible(true);
 				re.setLocationRelativeTo(null);
 				re.requestFocus();
+				re.actualizar_hora();
+				re.actualizarFecha();
 				dispose();
 				
 			}
@@ -176,8 +178,10 @@ public class Menu_Principal extends JFrame {
 				Registro_de_Entradas re = new Registro_de_Entradas();
 				re.setVisible(true);
 				re.setLocationRelativeTo(null);
-				dispose();
+				re.actualizar_hora();
+				re.actualizarFecha();
 				re.requestFocus();
+				dispose();
 			}
 		});
 		

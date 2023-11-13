@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Racks extends JFrame {
 
@@ -55,8 +56,16 @@ public class Racks extends JFrame {
 		contentPane.add(lblRacks);
 		
 		JButton btn_entrada = new JButton("");
+		btn_entrada.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_entrada.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_entrada.setBounds(10, 78, 173, 108);
+		
+		btn_entrada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		
 		contentPane.add(btn_entrada);
 		
 		JLabel lblRack = new JLabel("RACK 1");
@@ -67,6 +76,12 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack);
 		
 		JButton btn_salida = new JButton("");
+		btn_salida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_salida.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_salida.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_salida.setBounds(230, 78, 173, 108);
 		contentPane.add(btn_salida);
@@ -79,6 +94,12 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_1);
 		
 		JButton btn_racks = new JButton("");
+		btn_racks.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_racks.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_racks.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_racks.setBounds(467, 78, 173, 108);
 		contentPane.add(btn_racks);
@@ -91,6 +112,12 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_2);
 		
 		JButton btn_entrada_1 = new JButton("");
+		btn_entrada_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_entrada_1.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_entrada_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_entrada_1.setBounds(10, 251, 173, 108);
 		contentPane.add(btn_entrada_1);
@@ -103,6 +130,12 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_4);
 		
 		JButton btn_packing_list = new JButton("");
+		btn_packing_list.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_packing_list.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_packing_list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_packing_list.setBounds(695, 78, 173, 108);
 		contentPane.add(btn_packing_list);
@@ -115,11 +148,17 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_3);
 		
 		JButton btn_entrada_1_1 = new JButton("");
+		btn_entrada_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_entrada_1_1.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_entrada_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_entrada_1_1.setBounds(230, 251, 173, 108);
 		contentPane.add(btn_entrada_1_1);
 		
-		JLabel lblRack_4_1 = new JLabel("RACK 5");
+		JLabel lblRack_4_1 = new JLabel("RACK 6");
 		lblRack_4_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRack_4_1.setFont(new Font("Arial", Font.BOLD, 12));
 		lblRack_4_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -127,11 +166,17 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_4_1);
 		
 		JButton btn_entrada_1_2 = new JButton("");
+		btn_entrada_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_entrada_1_2.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_entrada_1_2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_entrada_1_2.setBounds(464, 251, 173, 108);
 		contentPane.add(btn_entrada_1_2);
 		
-		JLabel lblRack_4_2 = new JLabel("RACK 5");
+		JLabel lblRack_4_2 = new JLabel("RACK 7");
 		lblRack_4_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRack_4_2.setFont(new Font("Arial", Font.BOLD, 12));
 		lblRack_4_2.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -139,11 +184,17 @@ public class Racks extends JFrame {
 		contentPane.add(lblRack_4_2);
 		
 		JButton btn_entrada_1_1_1 = new JButton("");
+		btn_entrada_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btn_entrada_1_1_1.setIcon(new ImageIcon(Racks.class.getResource("/imagenes/racks.png")));
 		btn_entrada_1_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		btn_entrada_1_1_1.setBounds(695, 251, 173, 108);
 		contentPane.add(btn_entrada_1_1_1);
 		
-		JLabel lblRack_4_1_1 = new JLabel("RACK 5");
+		JLabel lblRack_4_1_1 = new JLabel("RACK 8");
 		lblRack_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRack_4_1_1.setFont(new Font("Arial", Font.BOLD, 12));
 		lblRack_4_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
