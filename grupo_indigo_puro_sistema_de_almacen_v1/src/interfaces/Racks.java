@@ -62,6 +62,10 @@ public class Racks extends JFrame {
 		
 		btn_entrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Rack_1 r1 = new Rack_1();
+				r1.setVisible(true);
+				r1.setLocationRelativeTo(null);
+				dispose();
 				requestFocus();
 			}
 		});
