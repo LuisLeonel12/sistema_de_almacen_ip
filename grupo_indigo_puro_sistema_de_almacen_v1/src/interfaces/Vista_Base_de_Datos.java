@@ -15,6 +15,7 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class Vista_Base_de_Datos extends JFrame {
 
@@ -47,6 +48,7 @@ public class Vista_Base_de_Datos extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 909, 700);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		setContentPane(contentPane);
@@ -55,16 +57,18 @@ public class Vista_Base_de_Datos extends JFrame {
 		JLabel lblBaseDeDatos = new JLabel("BASE DE DATOS GENERAL");
 		lblBaseDeDatos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBaseDeDatos.setFont(new Font("Arial", Font.BOLD, 16));
-		lblBaseDeDatos.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblBaseDeDatos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		lblBaseDeDatos.setBounds(181, 11, 532, 36);
 		contentPane.add(lblBaseDeDatos);
 		
 		tbl_base_de_datos = new JTable();
-		tbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0)));
+		tbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		tbl_base_de_datos.setBounds(10, 58, 873, 592);
 		contentPane.add(tbl_base_de_datos);
 		
 		JButton btn_menu_principal = new JButton("MENU PRINCIPAL");
+		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_menu_principal.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 13));
 		btn_menu_principal.setBounds(10, 11, 149, 36);
 		

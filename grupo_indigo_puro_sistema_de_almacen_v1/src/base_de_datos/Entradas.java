@@ -4,10 +4,10 @@ public class Entradas {
 
 	//variables globales solo para la clase debido a que son de clase privada
 	private int Id;
-    private String Codigo_Tela;
+    private String Codigo_Rollo;
+    private String Nombre_Tela;
     private String Proveedor;
     private String Peso;
-    private String Anchos_Cortables;
     private String Caracteristicas;
     private String Fecha_Entrada;
     private String Hora_de_Entrada;
@@ -19,16 +19,38 @@ public class Entradas {
     
     
     //contructor con la clase inicializada
-    public Entradas(int Id ,String Codigo_Tela, String Proveedor, String Peso, String Anchos_Cortables, String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
+    public Entradas(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso, String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
     	this.Id= Id;
-    	this.Codigo_Tela= Codigo_Tela;
+    	this.Codigo_Rollo= Codigo_Rollo;
+    	this.Nombre_Tela = Nombre_Tela;
     	this.Proveedor = Proveedor;
     	this.Peso = Peso;
-    	this.Anchos_Cortables = Anchos_Cortables;
     	this.Caracteristicas = Caracteristicas;
     	this.Fecha_Entrada = Fecha_Entrada;
     	this.Hora_de_Entrada = Hora_Entrada;
     }
+
+
+    
+    
+	public String getCodigo_Rollo() {
+		return Codigo_Rollo;
+	}
+
+
+	public void setCodigo_Rollo(String codigo_Rollo) {
+		this.Codigo_Rollo = codigo_Rollo;
+	}
+
+
+	public String getNombre_Tela() {
+		return Nombre_Tela;
+	}
+
+
+	public void setNombre_Tela(String nombre_Tela) {
+		this.Nombre_Tela = nombre_Tela;
+	}
 
 
 	public int getId() {
@@ -42,12 +64,12 @@ public class Entradas {
 
 
 	public String getCodigo_Tela() {
-		return Codigo_Tela;
+		return Codigo_Rollo;
 	}
 
 
 	public void setCodigo_Tela(String codigo_Tela) {
-		this.Codigo_Tela = codigo_Tela;
+		this.Codigo_Rollo = codigo_Tela;
 	}
 
 
@@ -68,16 +90,6 @@ public class Entradas {
 
 	public void setPeso(String peso) {
 		this.Peso = peso;
-	}
-
-
-	public String getAnchos_Cortables() {
-		return Anchos_Cortables;
-	}
-
-
-	public void setAnchos_Cortables(String anchos_Cortables) {
-		this.Anchos_Cortables = anchos_Cortables;
 	}
 
 

@@ -20,14 +20,14 @@ public class Entradas_DAO {
     
     //realizando la insercion de los datos a la tabla por medio de un procedimiento almacenado
     public boolean registro_de_entradas_de_tela(Entradas e){
-        sql = "INSERT INTO registro_de_entradas_de_tela(codigo_tela,proveedor,peso,anchos_cortables,caracteristicas,fecha_entrada,hora_entrada) VALUES (?,?,?,?,?,?,?,?)";
+        sql = "INSERT INTO registro_de_entradas_de_tela(codigo_rollo,nombre_tela,proveedor,peso,caracteristicas,fecha_entrada,hora_entrada)  VALUES (?,?,?,?,?,?,?)";
         
         try {
             ps = Conexion.prepareStatement(sql);
-            ps.setString(1,e.getCodigo_Tela());
-            ps.setString(2,e.getProveedor());
-            ps.setString(3,e.getPeso());
-            ps.setString(4,e.getAnchos_Cortables());
+            ps.setString(1,e.getCodigo_Rollo());
+            ps.setString(2,e.getNombre_Tela());
+            ps.setString(3,e.getProveedor());
+            ps.setString(4,e.getPeso());
             ps.setString(5,e.getCaracteristicas());
             ps.setString(6,e.getFecha_Entrada());
             ps.setString(7,e.getHora_de_Entrada());
