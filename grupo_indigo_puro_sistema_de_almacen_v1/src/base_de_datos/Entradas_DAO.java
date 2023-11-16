@@ -5,6 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import com.mysql.cj.jdbc.CallableStatement;
 
 public class Entradas_DAO {
 
@@ -40,5 +47,59 @@ public class Entradas_DAO {
     
     }
     
+    
+    public List Listar_registro_entradas(){
+        List<Entradas> listae = new ArrayList();
+        sql = "SELECT * FROM registro_de_entradas_de_tela";
+        
+          try {
+              ps = Conexion.prepareStatement(sql);
+              rs = ps.executeQuery();
+              
+              while (rs.next()) {
+              
+            	  Entradas e = new Entradas();
+                  e.setId(rs.getInt("Id"));
+                  e.setCodigo_Rollo(rs.getString("Codigo_Rollo"));
+                  e.setNombre_Tela(rs.getString("Nombre_Tela"));
+                  e.setProveedor(rs.getString("Proveedor"));
+                  e.setPeso(rs.getString("Peso"));
+              	  e.setCaracteristicas(rs.getString("Caracteristicas"));
+              	  e.setFecha_Entrada(rs.getString("Fecha_Entrada"));
+              	  e.setHora_de_Entrada(rs.getString("Hora_Entrada"));
+                  listae.add(e);
+              }
+              
+          } catch (SQLException e) {
+              System.out.println(e.toString());
+          }
+        return listae;
+          }
+    
+    
+    
+           public void Update_Sp(JTextField txt_codigo_rollo ,JTextField txt_nombre_tela , JTextField txt_proveedor , JTextField txt_peso
+            , JTextField txt_caracteristicas, JLabel lbl_fecha, JLabel lbl_hora ){
+
+			try {
+			
+			CallableStatement modificar = (CallableStatement) Conexion.prepareCall("CALL actualizar_datos(?,?,?,?,?,?,?);");
+			
+			//modificar.setInt(1,Integer.parseInt(txt_id.getText()));
+			modificar.setString(1, txt_codigo_rollo.getText());
+			modificar.setString(2, txt_nombre_tela.getText());
+			modificar.setString(3, txt_proveedor.getText());
+			modificar.setString(4, txt_peso.getText());
+			modificar.setString(5, txt_caracteristicas.getText());
+			modificar.setString(6, lbl_fecha.getText());
+			modificar.setString(7, lbl_hora.getText());
+			
+			modificar.execute();
+			
+			} catch (SQLException e) {
+			System.out.println(e.toString());
+			}
+    
+           }
 	
 }

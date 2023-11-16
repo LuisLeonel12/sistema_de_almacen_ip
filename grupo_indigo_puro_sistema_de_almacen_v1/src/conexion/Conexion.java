@@ -26,7 +26,7 @@ public class Conexion {
 	         con=(Connection)DriverManager.getConnection(URL,USER,PASS);
 	         
 	         if(con != null){
-	             //mensaje que se encarga de comprobar si la conexion esta lista
+	             //MENSAJE QUE SE ENCARGA DE COMPROBRAR SI LA CONEXION ESTA LISTA
 	        	 //JOptionPane.showMessageDialog(null,"conexion lista");
 	         }
 	         

@@ -62,6 +62,7 @@ public class Vista_Base_de_Datos extends JFrame {
 		contentPane.add(lblBaseDeDatos);
 		
 		tbl_base_de_datos = new JTable();
+		tbl_base_de_datos.setFillsViewportHeight(true);
 		tbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		tbl_base_de_datos.setBounds(10, 58, 873, 592);
 		contentPane.add(tbl_base_de_datos);

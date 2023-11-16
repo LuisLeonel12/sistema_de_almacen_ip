@@ -255,7 +255,7 @@ public class Registro_de_Salidas extends JFrame {
 		
 		contentPane.add(btn_menu_principal);
 		
-		JButton btnInventariDeEntradas_1 = new JButton("INVENTARIO DE ENTRADAS");
+		JButton btnInventariDeEntradas_1 = new JButton("INVENTARIO DE SALIDAS");
 		btnInventariDeEntradas_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnInventariDeEntradas_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnInventariDeEntradas_1.setFont(new Font("Arial", Font.BOLD, 12));
@@ -405,7 +405,7 @@ public class Registro_de_Salidas extends JFrame {
 	                Date horaActual = new Date();
 
 	                // Formatear la hora como una cadena
-	                SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm:ss a");
+	                SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm a");
 	                String horaFormateada = formatoHora.format(horaActual);
 
 	                // Actualizar el texto del JLabel con la hora

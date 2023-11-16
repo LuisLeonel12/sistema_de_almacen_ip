@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.awt.EventQueue;
+import tablas.Tabla_Registro_Entradas;
 import base_de_datos.Entradas;
 import base_de_datos.Entradas_DAO;
 import javax.swing.JFrame;
@@ -43,8 +44,6 @@ public class Registro_de_Entradas extends JFrame {
 	private JTextField txt_proveedor;
 	private JTextField txt_peso;
 	private JTextField txt_caracteristicas;
-	private JLabel lbl_imagen1;
-	private JLabel lbl_imagen2;
 	private JLabel lbl_fecha;
 	private JLabel lbl_hora;
 	
@@ -83,7 +82,7 @@ public class Registro_de_Entradas extends JFrame {
 		setResizable(false);
 		setTitle("REGISTRO DE ENTRADAS");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 861, 544);
+		setBounds(100, 100, 899, 486);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -103,28 +102,18 @@ public class Registro_de_Entradas extends JFrame {
 		txt_codigo_rollo.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				//este codigo hace que cada jtextfiel acepte solo numeros
 				
-				char validar = e.getKeyChar();
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
 				
-				if(Character.isLetter(validar)){
-					getToolkit().beep();
-					e.consume();
-				}
 			}
 		});
-		txt_codigo_rollo.setFont(new Font("Arial", Font.BOLD, 12));
+		txt_codigo_rollo.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_codigo_rollo.setColumns(10);
-		txt_codigo_rollo.setBounds(194, 58, 250, 43);
+		txt_codigo_rollo.setBounds(194, 58, 288, 43);
 		contentPane.add(txt_codigo_rollo);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("FOTOS DE TELA");
-		lblNewLabel_2_1.setHorizontalTextPosition(SwingConstants.CENTER);
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1.setFont(new Font("Arial", Font.BOLD, 20));
-		lblNewLabel_2_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_2_1.setBounds(454, 58, 381, 54);
-		contentPane.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("NOMBRE");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -135,9 +124,9 @@ public class Registro_de_Entradas extends JFrame {
 		
 		txt_nombre_tela = new JTextField();
 		txt_nombre_tela.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		txt_nombre_tela.setFont(new Font("Arial", Font.BOLD, 12));
+		txt_nombre_tela.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_nombre_tela.setColumns(10);
-		txt_nombre_tela.setBounds(194, 112, 250, 43);
+		txt_nombre_tela.setBounds(194, 112, 288, 43);
 		contentPane.add(txt_nombre_tela);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("PROVEEDOR");
@@ -149,9 +138,9 @@ public class Registro_de_Entradas extends JFrame {
 		
 		txt_proveedor = new JTextField();
 		txt_proveedor.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		txt_proveedor.setFont(new Font("Arial", Font.BOLD, 12));
+		txt_proveedor.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_proveedor.setColumns(10);
-		txt_proveedor.setBounds(194, 166, 250, 43);
+		txt_proveedor.setBounds(194, 166, 288, 43);
 		contentPane.add(txt_proveedor);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("PESO");
@@ -165,13 +154,16 @@ public class Registro_de_Entradas extends JFrame {
 		txt_peso.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
 			}
 		});
 		txt_peso.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		txt_peso.setFont(new Font("Arial", Font.BOLD, 12));
+		txt_peso.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_peso.setColumns(10);
-		txt_peso.setBounds(194, 220, 250, 43);
+		txt_peso.setBounds(194, 220, 288, 43);
 		contentPane.add(txt_peso);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("CARACTERISTICAS");
@@ -183,9 +175,9 @@ public class Registro_de_Entradas extends JFrame {
 		
 		txt_caracteristicas = new JTextField();
 		txt_caracteristicas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		txt_caracteristicas.setFont(new Font("Arial", Font.BOLD, 12));
+		txt_caracteristicas.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_caracteristicas.setColumns(10);
-		txt_caracteristicas.setBounds(194, 274, 250, 43);
+		txt_caracteristicas.setBounds(194, 274, 288, 43);
 		contentPane.add(txt_caracteristicas);
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("FECHA DE ENTRADA");
@@ -202,41 +194,11 @@ public class Registro_de_Entradas extends JFrame {
 		lblNewLabel_1_5_2.setBounds(10, 387, 174, 43);
 		contentPane.add(lblNewLabel_1_5_2);
 		
-		JButton btn_agregar_imagen1 = new JButton("AGREGAR IMAGENES");
-		btn_agregar_imagen1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_agregar_imagen1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_agregar_imagen1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			
-				seleccionarImagen();
-				requestFocus();
-				
-			}
-				
-        });
-				
-		btn_agregar_imagen1.setFont(new Font("Arial", Font.BOLD, 12));
-		btn_agregar_imagen1.setBounds(454, 396, 182, 34);
-		contentPane.add(btn_agregar_imagen1);
-		
-		JButton btn_agregar_imagen2 = new JButton("AGREGAR IMAGENES");
-		btn_agregar_imagen2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_agregar_imagen2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_agregar_imagen2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				seleccionarImagen2();
-				requestFocus();
-			}
-		});
-		btn_agregar_imagen2.setFont(new Font("Arial", Font.BOLD, 12));
-		btn_agregar_imagen2.setBounds(653, 396, 182, 34);
-		contentPane.add(btn_agregar_imagen2);
-		
 		JButton btnNewButton = new JButton("INGRESAR TELA");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
-		btnNewButton.setBounds(54, 458, 131, 31);
+		btnNewButton.setBounds(492, 58, 185, 43);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -250,6 +212,7 @@ public class Registro_de_Entradas extends JFrame {
 					requestFocus();
 				}else {
 					JOptionPane.showMessageDialog(null, "ERROR, VERIFIQUE QUE TODOS LOS CAMPOS SE ENCUENTREN LLENOS");
+					requestFocus();
 				}
 				
 			}
@@ -261,7 +224,7 @@ public class Registro_de_Entradas extends JFrame {
 		btnLimpiarCampos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLimpiarCampos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnLimpiarCampos.setFont(new Font("Arial", Font.BOLD, 12));
-		btnLimpiarCampos.setBounds(222, 458, 171, 31);
+		btnLimpiarCampos.setBounds(687, 58, 186, 43);
 		
 		btnLimpiarCampos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -288,51 +251,81 @@ public class Registro_de_Entradas extends JFrame {
 			}
 		});
 		btnMenuPrincipal_1.setFont(new Font("Arial", Font.BOLD, 12));
-		btnMenuPrincipal_1.setBounds(646, 458, 152, 31);
+		btnMenuPrincipal_1.setBounds(687, 387, 186, 43);
 		contentPane.add(btnMenuPrincipal_1);
 		
-		JButton btnInventariDeEntradas_1 = new JButton("INVENTARIO DE ENTRADAS");
+		JButton btnInventariDeEntradas_1 = new JButton("REGISTRO DE ENTRADAS");
 		btnInventariDeEntradas_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnInventariDeEntradas_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnInventariDeEntradas_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Tabla_Registro_Entradas te = new Tabla_Registro_Entradas();
+				te.setVisible(true);
+				te.setLocationRelativeTo(null);
+				te.requestFocus();
+				te.Listar_Registro_Entradas();
 				requestFocus();
 			}
 		});
 		btnInventariDeEntradas_1.setFont(new Font("Arial", Font.BOLD, 12));
-		btnInventariDeEntradas_1.setBounds(422, 458, 191, 31);
+		btnInventariDeEntradas_1.setBounds(492, 220, 185, 43);
 		contentPane.add(btnInventariDeEntradas_1);
 		
 		JLabel lblEntradas = new JLabel("ENTRADAS");
 		lblEntradas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEntradas.setFont(new Font("Arial", Font.BOLD, 16));
 		lblEntradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblEntradas.setBounds(10, 11, 825, 36);
+		lblEntradas.setBounds(10, 11, 863, 36);
 		contentPane.add(lblEntradas);
-		
-		lbl_imagen1 = new JLabel("");
-		lbl_imagen1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_imagen1.setBounds(454, 123, 182, 248);
-		contentPane.add(lbl_imagen1);
-		
-		lbl_imagen2 = new JLabel("");
-		lbl_imagen2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_imagen2.setBounds(653, 123, 182, 248);
-		contentPane.add(lbl_imagen2);
 		
 		lbl_fecha = new JLabel("");
 		lbl_fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_fecha.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_fecha.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_fecha.setBounds(194, 328, 250, 43);
+		lbl_fecha.setBounds(194, 328, 288, 43);
 		contentPane.add(lbl_fecha);
 		
 		lbl_hora = new JLabel("");
 		lbl_hora.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_hora.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_hora.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_hora.setBounds(194, 387, 250, 43);
+		lbl_hora.setBounds(194, 387, 288, 43);
 		contentPane.add(lbl_hora);
+		
+		JButton btnMenuPrincipal_1_1 = new JButton("ACTUALIZAR");
+		btnMenuPrincipal_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//CONDICONAL PARA REVISAR SI EL MATERIAL A INGRESADO CORRECTAMENTE
+				if(!"".equals(txt_codigo_rollo.getText()) && !"".equals(txt_nombre_tela.getText()) && !"".equals(txt_proveedor.getText()) && !"".equals(txt_peso.getText())
+				&& !"".equals(txt_caracteristicas.getText())) {
+					edao.Update_Sp(txt_codigo_rollo, txt_nombre_tela, txt_proveedor, txt_peso, txt_caracteristicas, lbl_fecha, lbl_hora);
+					JOptionPane.showMessageDialog(null, "MATERIAL ACTUALIZADO CORRECTAMENTE");
+					limpiar_campos();
+					requestFocus();
+				}else {
+					JOptionPane.showMessageDialog(null, "ERROR, VERIFIQUE QUE TODOS LOS CAMPOS SE ENCUENTREN LLENOS");
+					requestFocus();
+				}
+			}
+		});
+		btnMenuPrincipal_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnMenuPrincipal_1_1.setFont(new Font("Arial", Font.BOLD, 12));
+		btnMenuPrincipal_1_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btnMenuPrincipal_1_1.setBounds(687, 220, 186, 43);
+		contentPane.add(btnMenuPrincipal_1_1);
+		
+		JButton btnMenuPrincipal_1_2 = new JButton("ELIMINAR REGISTRO");
+		btnMenuPrincipal_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				requestFocus();
+			}
+		});
+		btnMenuPrincipal_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnMenuPrincipal_1_2.setFont(new Font("Arial", Font.BOLD, 12));
+		btnMenuPrincipal_1_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btnMenuPrincipal_1_2.setBounds(492, 387, 186, 43);
+		contentPane.add(btnMenuPrincipal_1_2);
 	}
 	
 	
@@ -342,68 +335,68 @@ public class Registro_de_Entradas extends JFrame {
 		txt_proveedor.setText("");
 		txt_peso.setText("");
 		txt_caracteristicas.setText("");
-		lbl_imagen1.setIcon(null);
-		lbl_imagen2.setIcon(null);
+		//lbl_imagen1.setIcon(null);
+		//lbl_imagen2.setIcon(null);
 	   
 	}
 	
 	
 	
-	private void seleccionarImagen() {
-	    JFileChooser jf = new JFileChooser();
-	    FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
-	    jf.setFileFilter(filtrado);
-
-	    int respuesta = jf.showOpenDialog(this);
-
-	    if (respuesta == JFileChooser.APPROVE_OPTION) {
-	        File archivoImagen = jf.getSelectedFile();
-
-	        try {
-	            // Leer la imagen original
-	            BufferedImage imagenOriginal = ImageIO.read(archivoImagen);
-
-	            // Obtener las dimensiones del JLabel
-	            int anchoLabel = lbl_imagen1.getWidth();
-	            int altoLabel = lbl_imagen1.getHeight();
-
-	            // Escalar la imagen para que se ajuste al JLabel
-	            java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(anchoLabel, altoLabel, Image.ORIGINAL_PNG);
-
-	            // Crear un ImageIcon con la imagen escalada
-	            ImageIcon imageIcon = new ImageIcon(imagenEscalada);
-
-	            // Establecer el ImageIcon en el JLabel
-	            lbl_imagen1.setIcon(imageIcon);
-
-	        } catch (IOException ex) {
-	            ex.printStackTrace();
-	        }
-	    }
-	}
+//	private void seleccionarImagen() {
+//	    JFileChooser jf = new JFileChooser();
+//	    FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
+//	    jf.setFileFilter(filtrado);
+//
+//	    int respuesta = jf.showOpenDialog(this);
+//
+//	    if (respuesta == JFileChooser.APPROVE_OPTION) {
+//	        File archivoImagen = jf.getSelectedFile();
+//
+//	        try {
+//	            // Leer la imagen original
+//	            BufferedImage imagenOriginal = ImageIO.read(archivoImagen);
+//
+//	            // Obtener las dimensiones del JLabel
+//	            int anchoLabel = lbl_imagen1.getWidth();
+//	            int altoLabel = lbl_imagen1.getHeight();
+//
+//	            // Escalar la imagen para que se ajuste al JLabel
+//	            java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(anchoLabel, altoLabel, Image.ORIGINAL_PNG);
+//
+//	            // Crear un ImageIcon con la imagen escalada
+//	            ImageIcon imageIcon = new ImageIcon(imagenEscalada);
+//
+//	            // Establecer el ImageIcon en el JLabel
+//	            lbl_imagen1.setIcon(imageIcon);
+//
+//	        } catch (IOException ex) {
+//	            ex.printStackTrace();
+//	        }
+//	    }
+//	}
 	
 	
-	private void seleccionarImagen2() {
-        JFileChooser jf = new JFileChooser();
-        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
-        jf.setFileFilter(filtrado);
-
-        int respuesta = jf.showOpenDialog(this);
-
-        if (respuesta == JFileChooser.APPROVE_OPTION) {
-            File archivoImagen = jf.getSelectedFile();
-
-            try {
-                BufferedImage imagen = ImageIO.read(archivoImagen);
-                java.awt.Image scaledImage = imagen.getScaledInstance(300, 200, Image.DEFAULT);
-                ImageIcon imageIcon = new ImageIcon(scaledImage);
-
-                lbl_imagen2.setIcon(imageIcon);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
+//	private void seleccionarImagen2() {
+//        JFileChooser jf = new JFileChooser();
+//        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
+//        jf.setFileFilter(filtrado);
+//
+//        int respuesta = jf.showOpenDialog(this);
+//
+//        if (respuesta == JFileChooser.APPROVE_OPTION) {
+//            File archivoImagen = jf.getSelectedFile();
+//
+//            try {
+//                BufferedImage imagen = ImageIO.read(archivoImagen);
+//                java.awt.Image scaledImage = imagen.getScaledInstance(300, 200, Image.DEFAULT);
+//                ImageIcon imageIcon = new ImageIcon(scaledImage);
+//
+//                lbl_imagen2.setIcon(imageIcon);
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//        }
+//    }
 	
 	
 	public void actualizarFecha() {
@@ -426,7 +419,7 @@ public class Registro_de_Entradas extends JFrame {
                 Date horaActual = new Date();
 
                 // Formatear la hora como una cadena
-                SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm:ss a");
+                SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm a");
                 String horaFormateada = formatoHora.format(horaActual);
 
                 // Actualizar el texto del JLabel con la hora
@@ -445,15 +438,6 @@ public class Registro_de_Entradas extends JFrame {
 
         hilo.start();
     }
-	
-	
-	//METODO QUE SE ENCARGA DE LIMPIAR LAS TABLAS
-    public void Limpiar() {
-    for (int i = 0; i < modelo.getRowCount(); i++) {
-    modelo.removeRow(i);
-    i = i - 1;
-    }
-    }
   
 	   public void Registrar_Entrada(){
 		   e.setCodigo_Rollo(txt_codigo_rollo.getText());
@@ -465,6 +449,4 @@ public class Registro_de_Entradas extends JFrame {
 	       e.setHora_de_Entrada(lbl_hora.getText());
 	       edao.registro_de_entradas_de_tela(e);
        }
-	
-	
 	}
