@@ -16,6 +16,8 @@ public class Pantalla_de_Carga extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JProgressBar progressBar;
+	
+	
 
 	/**
 	 * Launch the application.

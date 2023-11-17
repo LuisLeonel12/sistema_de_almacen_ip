@@ -91,20 +91,19 @@ public class Tabla_Registro_Entradas extends JFrame {
 		scrollPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				 int selecionar = tbl_registro_entradas.rowAtPoint(e.getPoint());
-			        txt_nombre_rollo.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 1).toString()));
-//			        txt_nombre.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 1).toString()));
-//			        txt_edad.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 2).toString()));
-//			        cbx_genero.setSelectedItem((tbl_registro_pacientes.getValueAt(selecionar, 3)));
-//			        txt_direccion.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 4).toString()));
-//			        txt_telefono.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 5).toString()));
-//			        txt_nacionalidad.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 6).toString()));
-//			        txt_ocupacion.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 7).toString()));
-//			        txt_tipo_sanguineo.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 8).toString()));
-//			        txt_religion.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 9).toString()));
-//			        txt_nombre_familiar.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 10).toString()));
-//			        txt_telefono_familiar.setText(String.valueOf(tbl_registro_pacientes.getValueAt(selecionar, 11).toString()));
-			        dispose();
+				 int selecionar = tbl_registro_entradas.getSelectedRow();
+				 //txt_id.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 2).toString()));
+				 
+				 Registro_de_Entradas re = new Registro_de_Entradas();
+				 re.txt_id.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 1)));
+				 re.txt_codigo_rollo.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 2).toString()));
+			     re.txt_nombre_tela.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 3).toString()));
+			     re.txt_proveedor.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 4).toString()));
+			     re.txt_peso.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 5).toString()));
+			     re.txt_caracteristicas.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 6).toString()));
+			     re.lbl_fecha.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 7).toString()));
+			     re.lbl_hora.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 8).toString()));
+			     dispose();
 			}
 		});
 		scrollPane.setBorder(new LineBorder(new Color(130, 135, 144), 1, true));
@@ -117,7 +116,7 @@ public class Tabla_Registro_Entradas extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"<html><center>ID</html></center>", "<html><center>CODIGO ROLLO</html></center>", "<html><center>NOMBRE TELA</html></center>", "<html><center>PROVEEDOR</html></center>", "<html><center>PESO</html></center>", "<html><center>CARACTERISTICAS</html></center>", "<html><center>FECHA DE ENTRADA</html></center>", "<html><center>HORA DE ENTRADA</html></center>"
+				"<html><center>ID</html></center>","<html><center>CODIGO ROLLO</html></center>", "<html><center>NOMBRE TELA</html></center>","<html><center>PROVEEDOR</html></center>","<html><center>PESO</html></center>","<html><center>CARACTERISTICAS</html></center>","<html><center>FECHA DE ENTRADA</html></center>","<html><center>HORA DE ENTRADA</html></center>"
 			}
 		));
 		tbl_registro_entradas.getColumnModel().getColumn(0).setPreferredWidth(65);

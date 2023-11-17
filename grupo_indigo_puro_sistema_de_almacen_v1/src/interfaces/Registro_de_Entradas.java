@@ -39,13 +39,14 @@ public class Registro_de_Entradas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txt_codigo_rollo;
-	private JTextField txt_nombre_tela;
-	private JTextField txt_proveedor;
-	private JTextField txt_peso;
-	private JTextField txt_caracteristicas;
-	private JLabel lbl_fecha;
-	private JLabel lbl_hora;
+	public JTextField txt_id;
+	public JTextField txt_codigo_rollo;
+	public JTextField txt_nombre_tela;
+	public JTextField txt_proveedor;
+	public JTextField txt_peso;
+	public JTextField txt_caracteristicas;
+	public JLabel lbl_fecha;
+	public JLabel lbl_hora;
 	
 	
 	//VARIABLES
@@ -82,7 +83,7 @@ public class Registro_de_Entradas extends JFrame {
 		setResizable(false);
 		setTitle("REGISTRO DE ENTRADAS");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 899, 486);
+		setBounds(100, 100, 899, 550);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -94,7 +95,7 @@ public class Registro_de_Entradas extends JFrame {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1.setBounds(10, 58, 174, 43);
+		lblNewLabel_1.setBounds(10, 128, 174, 43);
 		contentPane.add(lblNewLabel_1);
 		
 		txt_codigo_rollo = new JTextField();
@@ -112,42 +113,42 @@ public class Registro_de_Entradas extends JFrame {
 		});
 		txt_codigo_rollo.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_codigo_rollo.setColumns(10);
-		txt_codigo_rollo.setBounds(194, 58, 288, 43);
+		txt_codigo_rollo.setBounds(194, 128, 288, 43);
 		contentPane.add(txt_codigo_rollo);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("NOMBRE");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_1.setBounds(10, 112, 174, 43);
+		lblNewLabel_1_1.setBounds(10, 182, 174, 43);
 		contentPane.add(lblNewLabel_1_1);
 		
 		txt_nombre_tela = new JTextField();
 		txt_nombre_tela.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_nombre_tela.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_nombre_tela.setColumns(10);
-		txt_nombre_tela.setBounds(194, 112, 288, 43);
+		txt_nombre_tela.setBounds(194, 182, 288, 43);
 		contentPane.add(txt_nombre_tela);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("PROVEEDOR");
 		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_2.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_2.setBounds(10, 166, 174, 43);
+		lblNewLabel_1_2.setBounds(10, 236, 174, 43);
 		contentPane.add(lblNewLabel_1_2);
 		
 		txt_proveedor = new JTextField();
 		txt_proveedor.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_proveedor.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_proveedor.setColumns(10);
-		txt_proveedor.setBounds(194, 166, 288, 43);
+		txt_proveedor.setBounds(194, 236, 288, 43);
 		contentPane.add(txt_proveedor);
 		
 		JLabel lblNewLabel_1_3 = new JLabel("PESO");
 		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_3.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_3.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_3.setBounds(10, 220, 174, 43);
+		lblNewLabel_1_3.setBounds(10, 290, 174, 43);
 		contentPane.add(lblNewLabel_1_3);
 		
 		txt_peso = new JTextField();
@@ -163,42 +164,42 @@ public class Registro_de_Entradas extends JFrame {
 		txt_peso.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_peso.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_peso.setColumns(10);
-		txt_peso.setBounds(194, 220, 288, 43);
+		txt_peso.setBounds(194, 290, 288, 43);
 		contentPane.add(txt_peso);
 		
 		JLabel lblNewLabel_1_5 = new JLabel("CARACTERISTICAS");
 		lblNewLabel_1_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_5.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_5.setBounds(10, 274, 174, 43);
+		lblNewLabel_1_5.setBounds(10, 344, 174, 43);
 		contentPane.add(lblNewLabel_1_5);
 		
 		txt_caracteristicas = new JTextField();
 		txt_caracteristicas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_caracteristicas.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_caracteristicas.setColumns(10);
-		txt_caracteristicas.setBounds(194, 274, 288, 43);
+		txt_caracteristicas.setBounds(194, 344, 288, 43);
 		contentPane.add(txt_caracteristicas);
 		
 		JLabel lblNewLabel_1_5_1 = new JLabel("FECHA DE ENTRADA");
 		lblNewLabel_1_5_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_5_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_5_1.setBounds(10, 328, 174, 43);
+		lblNewLabel_1_5_1.setBounds(10, 398, 174, 43);
 		contentPane.add(lblNewLabel_1_5_1);
 		
 		JLabel lblNewLabel_1_5_2 = new JLabel("HORA DE ENTRADA");
 		lblNewLabel_1_5_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_5_2.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_5_2.setBounds(10, 387, 174, 43);
+		lblNewLabel_1_5_2.setBounds(10, 457, 174, 43);
 		contentPane.add(lblNewLabel_1_5_2);
 		
 		JButton btnNewButton = new JButton("INGRESAR TELA");
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 12));
-		btnNewButton.setBounds(492, 58, 185, 43);
+		btnNewButton.setBounds(492, 128, 185, 43);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -224,7 +225,7 @@ public class Registro_de_Entradas extends JFrame {
 		btnLimpiarCampos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLimpiarCampos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnLimpiarCampos.setFont(new Font("Arial", Font.BOLD, 12));
-		btnLimpiarCampos.setBounds(687, 58, 186, 43);
+		btnLimpiarCampos.setBounds(687, 128, 186, 43);
 		
 		btnLimpiarCampos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -251,7 +252,7 @@ public class Registro_de_Entradas extends JFrame {
 			}
 		});
 		btnMenuPrincipal_1.setFont(new Font("Arial", Font.BOLD, 12));
-		btnMenuPrincipal_1.setBounds(687, 387, 186, 43);
+		btnMenuPrincipal_1.setBounds(687, 457, 186, 43);
 		contentPane.add(btnMenuPrincipal_1);
 		
 		JButton btnInventariDeEntradas_1 = new JButton("REGISTRO DE ENTRADAS");
@@ -268,7 +269,7 @@ public class Registro_de_Entradas extends JFrame {
 			}
 		});
 		btnInventariDeEntradas_1.setFont(new Font("Arial", Font.BOLD, 12));
-		btnInventariDeEntradas_1.setBounds(492, 220, 185, 43);
+		btnInventariDeEntradas_1.setBounds(492, 290, 185, 43);
 		contentPane.add(btnInventariDeEntradas_1);
 		
 		JLabel lblEntradas = new JLabel("ENTRADAS");
@@ -282,24 +283,24 @@ public class Registro_de_Entradas extends JFrame {
 		lbl_fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_fecha.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_fecha.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_fecha.setBounds(194, 328, 288, 43);
+		lbl_fecha.setBounds(194, 398, 288, 43);
 		contentPane.add(lbl_fecha);
 		
 		lbl_hora = new JLabel("");
 		lbl_hora.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_hora.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_hora.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_hora.setBounds(194, 387, 288, 43);
+		lbl_hora.setBounds(194, 457, 288, 43);
 		contentPane.add(lbl_hora);
 		
 		JButton btnMenuPrincipal_1_1 = new JButton("ACTUALIZAR");
 		btnMenuPrincipal_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//CONDICONAL PARA REVISAR SI EL MATERIAL A INGRESADO CORRECTAMENTE
+				//CONDICONAL PARA REVISAR SI EL MATERIAL SE A ACTUALIZADO CORRECTAMENTE
 				if(!"".equals(txt_codigo_rollo.getText()) && !"".equals(txt_nombre_tela.getText()) && !"".equals(txt_proveedor.getText()) && !"".equals(txt_peso.getText())
 				&& !"".equals(txt_caracteristicas.getText())) {
-					edao.Update_Sp(txt_codigo_rollo, txt_nombre_tela, txt_proveedor, txt_peso, txt_caracteristicas, lbl_fecha, lbl_hora);
+					actualizarEntrada(Integer.parseInt(txt_id.getText()));
 					JOptionPane.showMessageDialog(null, "MATERIAL ACTUALIZADO CORRECTAMENTE");
 					limpiar_campos();
 					requestFocus();
@@ -312,7 +313,7 @@ public class Registro_de_Entradas extends JFrame {
 		btnMenuPrincipal_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnMenuPrincipal_1_1.setFont(new Font("Arial", Font.BOLD, 12));
 		btnMenuPrincipal_1_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btnMenuPrincipal_1_1.setBounds(687, 220, 186, 43);
+		btnMenuPrincipal_1_1.setBounds(687, 290, 186, 43);
 		contentPane.add(btnMenuPrincipal_1_1);
 		
 		JButton btnMenuPrincipal_1_2 = new JButton("ELIMINAR REGISTRO");
@@ -324,8 +325,22 @@ public class Registro_de_Entradas extends JFrame {
 		btnMenuPrincipal_1_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnMenuPrincipal_1_2.setFont(new Font("Arial", Font.BOLD, 12));
 		btnMenuPrincipal_1_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btnMenuPrincipal_1_2.setBounds(492, 387, 186, 43);
+		btnMenuPrincipal_1_2.setBounds(492, 457, 186, 43);
 		contentPane.add(btnMenuPrincipal_1_2);
+		
+		JLabel lbl_id = new JLabel("ID");
+		lbl_id.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_id.setFont(new Font("Arial", Font.BOLD, 13));
+		lbl_id.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		lbl_id.setBounds(10, 74, 174, 43);
+		contentPane.add(lbl_id);
+		
+		txt_id = new JTextField();
+		txt_id.setFont(new Font("Arial", Font.BOLD, 13));
+		txt_id.setColumns(10);
+		txt_id.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		txt_id.setBounds(194, 74, 61, 43);
+		contentPane.add(txt_id);
 	}
 	
 	
@@ -335,79 +350,17 @@ public class Registro_de_Entradas extends JFrame {
 		txt_proveedor.setText("");
 		txt_peso.setText("");
 		txt_caracteristicas.setText("");
-		//lbl_imagen1.setIcon(null);
-		//lbl_imagen2.setIcon(null);
 	   
 	}
 	
 	
-	
-//	private void seleccionarImagen() {
-//	    JFileChooser jf = new JFileChooser();
-//	    FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
-//	    jf.setFileFilter(filtrado);
-//
-//	    int respuesta = jf.showOpenDialog(this);
-//
-//	    if (respuesta == JFileChooser.APPROVE_OPTION) {
-//	        File archivoImagen = jf.getSelectedFile();
-//
-//	        try {
-//	            // Leer la imagen original
-//	            BufferedImage imagenOriginal = ImageIO.read(archivoImagen);
-//
-//	            // Obtener las dimensiones del JLabel
-//	            int anchoLabel = lbl_imagen1.getWidth();
-//	            int altoLabel = lbl_imagen1.getHeight();
-//
-//	            // Escalar la imagen para que se ajuste al JLabel
-//	            java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(anchoLabel, altoLabel, Image.ORIGINAL_PNG);
-//
-//	            // Crear un ImageIcon con la imagen escalada
-//	            ImageIcon imageIcon = new ImageIcon(imagenEscalada);
-//
-//	            // Establecer el ImageIcon en el JLabel
-//	            lbl_imagen1.setIcon(imageIcon);
-//
-//	        } catch (IOException ex) {
-//	            ex.printStackTrace();
-//	        }
-//	    }
-//	}
-	
-	
-//	private void seleccionarImagen2() {
-//        JFileChooser jf = new JFileChooser();
-//        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG & PNG", "JPG", "PNG");
-//        jf.setFileFilter(filtrado);
-//
-//        int respuesta = jf.showOpenDialog(this);
-//
-//        if (respuesta == JFileChooser.APPROVE_OPTION) {
-//            File archivoImagen = jf.getSelectedFile();
-//
-//            try {
-//                BufferedImage imagen = ImageIO.read(archivoImagen);
-//                java.awt.Image scaledImage = imagen.getScaledInstance(300, 200, Image.DEFAULT);
-//                ImageIcon imageIcon = new ImageIcon(scaledImage);
-//
-//                lbl_imagen2.setIcon(imageIcon);
-//            } catch (IOException ex) {
-//                ex.printStackTrace();
-//            }
-//        }
-//    }
-	
-	
 	public void actualizarFecha() {
-        // Obtener la fecha actual
+
         Date fechaActual = new Date();
 
-        // Formatear la fecha como una cadena
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         String fechaFormateada = formatoFecha.format(fechaActual);
 
-        // Actualizar el texto del JLabel
         lbl_fecha.setText(fechaFormateada);
     }
 	
@@ -415,19 +368,16 @@ public class Registro_de_Entradas extends JFrame {
 	public void actualizar_hora() {
         Thread hilo = new Thread(() -> {
             while (true) {
-                // Obtener la hora actual
+            	
                 Date horaActual = new Date();
 
-                // Formatear la hora como una cadena
                 SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm a");
                 String horaFormateada = formatoHora.format(horaActual);
 
-                // Actualizar el texto del JLabel con la hora
                 SwingUtilities.invokeLater(() -> {
                     lbl_hora.setText(horaFormateada);
                 });
 
-                // Dormir el hilo durante 1 segundo
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -449,4 +399,21 @@ public class Registro_de_Entradas extends JFrame {
 	       e.setHora_de_Entrada(lbl_hora.getText());
 	       edao.registro_de_entradas_de_tela(e);
        }
+	   
+	   public void actualizarEntrada(int id) {
+
+		    if (e != null) {
+		        e.setCodigo_Rollo(txt_codigo_rollo.getText());
+		        e.setNombre_Tela(txt_nombre_tela.getText());
+		        e.setProveedor(txt_proveedor.getText());
+		        e.setPeso(txt_peso.getText());
+		        e.setCaracteristicas(txt_caracteristicas.getText());
+		        e.setFecha_Entrada(lbl_fecha.getText());
+		        e.setHora_de_Entrada(lbl_hora.getText());
+		        edao.Actualizar_Registro_Entradas(e);
+		    } else {
+		        
+		    }
+		}
+	   
 	}
