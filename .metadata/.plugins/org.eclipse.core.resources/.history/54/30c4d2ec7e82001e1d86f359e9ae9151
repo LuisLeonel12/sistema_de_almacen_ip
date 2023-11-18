@@ -1,0 +1,25 @@
+package base_de_datos;
+
+import conexion.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Entradas_DAO {
+
+	//variables
+    String sql;
+    //Statement st;
+    PreparedStatement ps;
+    Conexion con = new Conexion();
+    Connection Conexion = con.Conectar();
+    ResultSet rs;
+    //DefaultTableModel modelo = new DefaultTableModel();
+    
+    
+    //realizando la insercion de los datos a la tabla
+    
+    
+    
+	
+}

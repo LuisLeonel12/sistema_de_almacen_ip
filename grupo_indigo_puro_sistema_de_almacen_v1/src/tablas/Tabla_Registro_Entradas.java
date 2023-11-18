@@ -3,10 +3,8 @@ import interfaces.Registro_de_Entradas;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
-
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -23,6 +21,12 @@ import javax.swing.JScrollPane;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import static interfaces.Registro_de_Entradas.txt_id;
+import static interfaces.Registro_de_Entradas.txt_codigo_rollo;
+import static interfaces.Registro_de_Entradas.txt_nombre_tela;
+import static interfaces.Registro_de_Entradas.txt_proveedor;
+import static interfaces.Registro_de_Entradas.txt_peso;
+import static interfaces.Registro_de_Entradas.txt_caracteristicas;
 
 public class Tabla_Registro_Entradas extends JFrame {
 
@@ -31,10 +35,11 @@ public class Tabla_Registro_Entradas extends JFrame {
 	private JPanel contentPane;
 	private JTable tbl_registro_entradas;
 	
-	//VARIABLES
+		//VARIABLES
 		Entradas e = new Entradas();
 		Entradas_DAO edao= new Entradas_DAO();
 	    DefaultTableModel modelo = new DefaultTableModel();
+	    
 
 	/**
 	 * Launch the application.
@@ -87,31 +92,34 @@ public class Tabla_Registro_Entradas extends JFrame {
 		lblRegistroDeEntradas.setBounds(202, 9, 658, 36);
 		contentPane.add(lblRegistroDeEntradas);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(11, 58, 1043, 592);
+		contentPane.add(scrollPane_1);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				 int selecionar = tbl_registro_entradas.getSelectedRow();
-				 //txt_id.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 2).toString()));
-				 
-				 Registro_de_Entradas re = new Registro_de_Entradas();
-				 re.txt_id.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 1)));
-				 re.txt_codigo_rollo.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 2).toString()));
-			     re.txt_nombre_tela.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 3).toString()));
-			     re.txt_proveedor.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 4).toString()));
-			     re.txt_peso.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 5).toString()));
-			     re.txt_caracteristicas.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 6).toString()));
-			     re.lbl_fecha.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 7).toString()));
-			     re.lbl_hora.setText(String.valueOf(tbl_registro_entradas.getValueAt(selecionar, 8).toString()));
-			     dispose();
-			}
-		});
+		scrollPane_1.setViewportView(scrollPane);
 		scrollPane.setBorder(new LineBorder(new Color(130, 135, 144), 1, true));
-		scrollPane.setBounds(11, 58, 1043, 592);
-		contentPane.add(scrollPane);
 		
 		tbl_registro_entradas = new JTable();
+		tbl_registro_entradas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				int seleccionar = tbl_registro_entradas.rowAtPoint(e.getPoint());
+				
+                txt_id.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 0)));
+                txt_codigo_rollo.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 1)));
+                txt_nombre_tela.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 2)));
+                txt_proveedor.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 3)));
+                txt_peso.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 4)));
+                txt_caracteristicas.setText(String.valueOf(tbl_registro_entradas.getValueAt(seleccionar, 5)));
+		     
+		     dispose();
+				
+			}
+		});
 		scrollPane.setViewportView(tbl_registro_entradas);
+		tbl_registro_entradas.setDefaultEditor(Object.class, null);
 		tbl_registro_entradas.setModel(new DefaultTableModel(
 			new Object[][] {
 			},

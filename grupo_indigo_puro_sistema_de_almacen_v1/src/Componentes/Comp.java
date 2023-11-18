@@ -74,5 +74,17 @@ public class Comp extends JFrame {
 		btn_agregar_imagen2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_agregar_imagen2.setBounds(209, 349, 182, 34);
 		contentPane.add(btn_agregar_imagen2);
+		
+		JLabel lbl_racks = new JLabel("RACKS");
+		lbl_racks.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_racks.setFont(new Font("Arial", Font.BOLD, 14));
+		lbl_racks.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		lbl_racks.setBounds(401, 120, 192, 30);
+		contentPane.add(lbl_racks);
+		
+		JButton btn_racks = new JButton("");
+		btn_racks.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_racks.setBounds(401, 11, 192, 108);
+		contentPane.add(btn_racks);
 	}
 }

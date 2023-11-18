@@ -3,6 +3,7 @@ package base_de_datos;
 public class Entradas {
 
 	//variables globales solo para la clase debido a que son de clase privada
+	//
 	private int Id;
     private String Codigo_Rollo;
     private String Nombre_Tela;

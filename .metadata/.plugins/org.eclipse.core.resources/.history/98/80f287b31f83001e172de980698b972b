@@ -1,0 +1,94 @@
+package diseño_pdf;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+public class packing_list {
+
+	
+	//metodo principal
+	public static void main(String[] args) {
+		pdf_packing_list();
+	}
+	
+	
+	
+	//metodo encargado de generar el pdf
+	public static void pdf_packing_list() {
+		
+		String nombre_documento = "packing list" ;
+		
+		String url="C:/Users/User/eclipse-workspace/grupo_indigo_puro_sistema_de_almacen_v1/src/pdf/"+nombre_documento+".pdf";
+		Rectangle r = new Rectangle(220,280);
+		Document documento = new Document(r,9f,9f,7f,7f);
+		
+		try {
+			
+			FileOutputStream archivo = new FileOutputStream(url);
+			
+			PdfWriter.getInstance(documento, archivo);
+			
+			documento.open();
+			
+			
+			//FUENTES PARA TITULOS Y FUENTE PARA LOS DATOS
+			//TIPO DE LETRA, TAMAÑO DE LA FUENTE,DISEÑO DE LETRA,COLOR DE LA FUENTE
+			Font Fuente_titulo = FontFactory.getFont(FontFactory.TIMES,6,Font.NORMAL,BaseColor.BLACK);
+			Font Fuente_texto = FontFactory.getFont(FontFactory.TIMES,5,Font.NORMAL,BaseColor.BLACK);
+			
+			//variable para salto de linea
+			Paragraph salto_linea = new Paragraph();
+			salto_linea.add(new Paragraph(Chunk.NEWLINE));
+			
+			
+			//INICIA EL APARTADO DE TITULO PARA EL DOCUMENTO
+			PdfPTable titulo = new PdfPTable(2);
+			titulo.setWidthPercentage(100);
+			float[] medida_de_celda_titulo = {10f};
+			titulo.setWidths(medida_de_celda_titulo);
+			
+			PdfPCell t1 = new PdfPCell(new Phrase("INFORME DE CORTE POR MODELO",Fuente_titulo)); 
+			t1.setVerticalAlignment(Element.ALIGN_CENTER);
+			t1.setHorizontalAlignment(Element.ALIGN_CENTER);
+			t1.setBorder(0);
+			
+			titulo.addCell(t1);
+                        
+			documento.add(titulo);
+			
+			//TERMINA EL APARTADO DE TITULO PARA EL DOCUMENTO
+			
+			
+			//cerrar necesariamente el documento pdf para acceder al archivo generado
+			documento.close();
+			
+			
+			JOptionPane.showMessageDialog(null,"PDF GENERADO CORRECTAMENTE");
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,"ERROR AL GENERAR EL PDF");
+		}
+		
+		      
+	}
+	
+	
+}
