@@ -1,5 +1,5 @@
 package tablas;
-import interfaces.Registro_de_Entradas;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -124,7 +124,7 @@ public class Tabla_Registro_Entradas extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"<html><center>ID</html></center>","<html><center>CODIGO ROLLO</html></center>", "<html><center>NOMBRE TELA</html></center>","<html><center>PROVEEDOR</html></center>","<html><center>PESO</html></center>","<html><center>CARACTERISTICAS</html></center>","<html><center>FECHA DE ENTRADA</html></center>","<html><center>HORA DE ENTRADA</html></center>"
+				"<html><center>ID</html></center>", "<html><center>CODIGO ROLLO</html></center>", "<html><center>NOMBRE TELA</html></center>", "<html><center>PROVEEDOR</html></center>", "<html><center>PESO</html></center>", "<html><center>CARACTERISTICAS</html></center>", "<html><center>FECHA DE ENTRADA</html></center>", "<html><center>HORA DE ENTRADA</html></center>"
 			}
 		));
 		tbl_registro_entradas.getColumnModel().getColumn(0).setPreferredWidth(65);

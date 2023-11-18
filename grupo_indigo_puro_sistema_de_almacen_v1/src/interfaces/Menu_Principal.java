@@ -86,7 +86,7 @@ public class Menu_Principal extends JFrame {
 		btn_entrada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_entrada.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/entradas.png")));
 		btn_entrada.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_entrada.setBounds(22, 72, 173, 108);
+		btn_entrada.setBounds(622, 267, 198, 108);
 		
 		btn_entrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +124,7 @@ public class Menu_Principal extends JFrame {
 		btn_packing_list.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_packing_list.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/packing_list.png")));
 		btn_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_packing_list.setBounds(22, 267, 173, 108);
+		btn_packing_list.setBounds(22, 267, 192, 108);
 		
 		btn_packing_list.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,7 +161,7 @@ public class Menu_Principal extends JFrame {
 		lbl_entradas.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_entradas.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_entradas.setBounds(22, 181, 173, 30);
+		lbl_entradas.setBounds(622, 376, 198, 30);
 		
 		lbl_entradas.addMouseListener(new MouseAdapter() {
 			@Override
@@ -207,7 +207,7 @@ public class Menu_Principal extends JFrame {
 		lbl_packing_list.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_packing_list.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_packing_list.setBounds(22, 376, 173, 30);
+		lbl_packing_list.setBounds(22, 376, 192, 30);
 		
 		lbl_packing_list.addMouseListener(new MouseAdapter() {
 			@Override
@@ -226,36 +226,40 @@ public class Menu_Principal extends JFrame {
 		btn_base_de_datos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_base_de_datos.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/base-de-datos.png")));
 		btn_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_base_de_datos.setBounds(628, 267, 192, 108);
+		btn_base_de_datos.setBounds(22, 72, 192, 108);
 		
 		btn_base_de_datos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Vista_Base_de_Datos vbd = new Vista_Base_de_Datos();
-				vbd.setVisible(true);
-				vbd.setLocationRelativeTo(null);
-				vbd.requestFocus();
+				Inventario_General ig = new Inventario_General();
+				ig.setVisible(true);
+				ig.setLocationRelativeTo(null);
+				ig.actualizar_Fecha();
+				ig.actualizar_hora();
+				ig.requestFocus();
 				dispose();
 			}
 		});
 		
 		contentPane.add(btn_base_de_datos);
 		
-		JLabel lbl_base_de_datos = new JLabel("BASE DE DATOS GENERAL");
+		JLabel lbl_base_de_datos = new JLabel("INVENTARIO GENERAL");
 		lbl_base_de_datos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lbl_base_de_datos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Vista_Base_de_Datos vbd = new Vista_Base_de_Datos();
-				vbd.setVisible(true);
-				vbd.setLocationRelativeTo(null);
-				vbd.requestFocus();
+				Inventario_General ig = new Inventario_General();
+				ig.setVisible(true);
+				ig.setLocationRelativeTo(null);
+				ig.actualizar_Fecha();
+				ig.actualizar_hora();
+				ig.requestFocus();
 				dispose();
 			}
 		});
 		lbl_base_de_datos.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_base_de_datos.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_base_de_datos.setBounds(628, 376, 192, 30);
+		lbl_base_de_datos.setBounds(22, 181, 192, 30);
 		contentPane.add(lbl_base_de_datos);
 		
 		JLabel lblMenuPrincipal = new JLabel("MENU PRINCIPAL");

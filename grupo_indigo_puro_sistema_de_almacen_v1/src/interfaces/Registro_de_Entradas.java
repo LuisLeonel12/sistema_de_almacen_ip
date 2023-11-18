@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Desktop;
 import javax.swing.border.LineBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import com.itextpdf.text.Image;
 import java.awt.Toolkit;
@@ -49,7 +48,6 @@ public class Registro_de_Entradas extends JFrame {
 	public static JLabel lbl_fecha;
 	public static JLabel lbl_hora;
 	
-	
 	//VARIABLES
 	Entradas en = new Entradas();
 	Entradas_DAO edao= new Entradas_DAO();
@@ -64,11 +62,10 @@ public class Registro_de_Entradas extends JFrame {
 				try {
 					Registro_de_Entradas frame = new Registro_de_Entradas();
 					frame.setVisible(true);
-					frame.requestFocus();
 					frame.setLocationRelativeTo(null);
 					frame.actualizarFecha();
 					frame.actualizar_hora();
-					
+					frame.requestFocus();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -398,7 +395,7 @@ public class Registro_de_Entradas extends JFrame {
                 String horaFormateada = formatoHora.format(horaActual);
 
                 SwingUtilities.invokeLater(() -> {
-                    lbl_hora.setText(horaFormateada);
+                	lbl_hora.setText(horaFormateada);
                 });
 
                 try {
