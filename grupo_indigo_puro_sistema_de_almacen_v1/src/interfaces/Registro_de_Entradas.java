@@ -334,6 +334,7 @@ public class Registro_de_Entradas extends JFrame {
 					edao.eliminarEntradaTela(Integer.parseInt(txt_id.getText()));
 					JOptionPane.showMessageDialog(null,"REGISTRO ELIMINADO CORRECTAMENTE");
 					txt_id.setText("");
+					limpiar_campos();
 					requestFocus();
 				}else {
 					JOptionPane.showMessageDialog(null,"ERROR AL ELIMINAR EL REGISTRO");

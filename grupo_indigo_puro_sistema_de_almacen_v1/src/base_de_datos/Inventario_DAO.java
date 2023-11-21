@@ -24,8 +24,8 @@ public class Inventario_DAO {
     //INSERTAR DATOS A LA TABLA GENERAL
     public boolean Insertar_Inventario_General(Inventario in) {
         String sql = "INSERT INTO grupo_indigo_puro_almacen_db.inventario_general " +
-                     "(codigo_rollo, nombre_tela, proveedor, peso_total, caracteristicas, fecha_entrada, hora_entrada) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                     "(codigo_rollo, nombre_tela, proveedor, peso_total, metros, estilo, ancho, piezas , caracteristicas, fecha_entrada, hora_entrada) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ? ,? , ?, ?, ?)";
 
         try {
             ps = Conexion.prepareStatement(sql);
@@ -33,9 +33,13 @@ public class Inventario_DAO {
             ps.setString(2, in.getNombre_Tela());
             ps.setString(3, in.getProveedor());
             ps.setString(4, in.getPeso_total());
-            ps.setString(5, in.getCaracteristicas());
-            ps.setString(6, in.getFecha_Entrada());
-            ps.setString(7, in.getHora_de_Entrada());
+            ps.setString(5, in.getMetros());
+            ps.setString(6, in.getEstilo());
+            ps.setString(7, in.getAncho());
+            ps.setString(8, in.getPiezas());
+            ps.setString(9, in.getCaracteristicas());
+            ps.setString(10, in.getFecha_Entrada());
+            ps.setString(11, in.getHora_de_Entrada());
             ps.execute();
             return true;
         } catch (SQLException e1) {
@@ -75,18 +79,18 @@ public class Inventario_DAO {
     
     
     //ACTUALIAR UN VALOR DE LA TABLA POR MEDIO DEL UPDATE 
-    public boolean actualizarEntradaTela(Entradas e) {
+    public boolean Actualizar_Inventario_General(Inventario i) {
         String sql = "UPDATE grupo_indigo_puro_almacen_db.inventario_general " +
                      "SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso_total=?, caracteristicas=? " +
                      "WHERE id=?";
         
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
-            ps.setString(1, e.getCodigo_Rollo());
-            ps.setString(2, e.getNombre_Tela());
-            ps.setString(3, e.getProveedor());
-            ps.setString(4, e.getPeso());
-            ps.setString(5, e.getCaracteristicas());
-            ps.setInt(6, e.getId());
+            ps.setString(1, i.getCodigo_Rollo());
+            ps.setString(2, i.getNombre_Tela());
+            ps.setString(3, i.getProveedor());
+            ps.setString(4, i.getPeso_total());
+            ps.setString(5, i.getCaracteristicas());
+            ps.setInt(6, i.getId());
             
             int filasActualizadas = ps.executeUpdate();
             
@@ -98,7 +102,7 @@ public class Inventario_DAO {
     }
     
     //ELIMINAR DATOS DE LA TABLA POR MEIO DEL ID
-    public boolean eliminarEntradaTela(int id) {
+    public boolean Eliminar_Inventario_General(int id) {
         String sql = "DELETE FROM grupo_indigo_puro_almacen_db.inventario_general WHERE id=?";
         
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {

@@ -9,6 +9,10 @@ public class Inventario {
 	    private String Nombre_Tela;
 	    private String Proveedor;
 	    private String Peso_Total;
+	    private String Metros;
+	    private String Estilo;
+	    private String Ancho;
+	    private String Piezas;
 	    private String Caracteristicas;
 	    private String Fecha_Entrada;
 	    private String Hora_de_Entrada;
@@ -20,22 +24,61 @@ public class Inventario {
 	    
 	    
 	    //contructor con la clase inicializada
-	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total, String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
+	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,String Metros,String Estilo,String Ancho,String Piezas ,String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
 	    	this.Id= Id;
 	    	this.Codigo_Rollo= Codigo_Rollo;
 	    	this.Nombre_Tela = Nombre_Tela;
 	    	this.Proveedor = Proveedor;
-	    	this.Peso_Total = Peso_Total;
+	    	this.Metros = Metros;
+	    	this.Estilo = Estilo;
+	    	this.Ancho = Ancho;
+	    	this.Piezas = Piezas;
 	    	this.Caracteristicas = Caracteristicas;
 	    	this.Fecha_Entrada = Fecha_Entrada;
 	    	this.Hora_de_Entrada = Hora_Entrada;
 	    }
-
-
-	    
 	    
 		public String getCodigo_Rollo() {
 			return Codigo_Rollo;
+		}
+
+		public String getMetros() {
+			return Metros;
+		}
+
+
+		public void setMetros(String metros) {
+			this.Metros = metros;
+		}
+
+
+		public String getEstilo() {
+			return Estilo;
+		}
+
+
+		public void setEstilo(String estilo) {
+			this.Estilo = estilo;
+		}
+
+
+		public String getAncho() {
+			return Ancho;
+		}
+
+
+		public void setAncho(String ancho) {
+			this.Ancho = ancho;
+		}
+
+
+		public String getPiezas() {
+			return Piezas;
+		}
+
+
+		public void setPiezas(String piezas) {
+			this.Piezas = piezas;
 		}
 
 
@@ -123,8 +166,5 @@ public class Inventario {
 		public void setHora_de_Entrada(String hora_de_Entrada) {
 			this.Hora_de_Entrada = hora_de_Entrada;
 		}
-	    
-	    
-	    
-	
+	  
 }

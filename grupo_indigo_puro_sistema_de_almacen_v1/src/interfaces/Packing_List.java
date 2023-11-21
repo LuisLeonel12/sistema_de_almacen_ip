@@ -149,5 +149,22 @@ public class Packing_List extends JFrame {
 		textField_21.setColumns(10);
 		textField_21.setBounds(175, 152, 269, 36);
 		contentPane.add(textField_21);
+		
+		JButton btn_menu_principal = new JButton("MENU PRINCIPAL");
+		btn_menu_principal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu_Principal mp = new Menu_Principal();
+				dispose();
+				mp.setVisible(true);
+				mp.setLocationRelativeTo(null);
+				mp.requestFocus();
+				mp.actualizarFecha();
+				mp.iniciarHiloActualizacionHora();
+			}
+		});
+		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 12));
+		btn_menu_principal.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_menu_principal.setBounds(10, 323, 186, 43);
+		contentPane.add(btn_menu_principal);
 	}
 }
