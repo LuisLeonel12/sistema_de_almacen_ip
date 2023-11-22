@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class Packing_List extends JFrame {
 
@@ -151,6 +152,7 @@ public class Packing_List extends JFrame {
 		contentPane.add(textField_21);
 		
 		JButton btn_menu_principal = new JButton("MENU PRINCIPAL");
+		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_menu_principal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu_Principal mp = new Menu_Principal();

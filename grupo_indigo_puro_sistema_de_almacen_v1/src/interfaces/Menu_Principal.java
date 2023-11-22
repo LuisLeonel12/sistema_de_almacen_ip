@@ -51,7 +51,7 @@ public class Menu_Principal extends JFrame {
 			public void run() {
 				try {
 					Menu_Principal frame = new Menu_Principal();
-					
+					frame.requestFocus();
 					frame.setVisible(true);
 					frame.actualizarFecha();
 					frame.iniciarHiloActualizacionHora();

@@ -30,6 +30,8 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Inventario_General extends JFrame {
 
@@ -60,6 +62,7 @@ public class Inventario_General extends JFrame {
 			public void run() {
 				try {
 					Inventario_General frame = new Inventario_General();
+					frame.requestFocus();
 					frame.setVisible(true);
 					frame.actualizar_Fecha();
 					frame.actualizar_hora();
@@ -75,13 +78,14 @@ public class Inventario_General extends JFrame {
 	 * Create the frame.
 	 */
 	public Inventario_General() {
+		setResizable(false);
 		setTitle("BASE DE DATOS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Inventario_General.class.getResource("/imagenes/bd.png")));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1030, 646);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 140, 0));
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -97,7 +101,7 @@ public class Inventario_General extends JFrame {
 		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_menu_principal.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 13));
-		btn_menu_principal.setBounds(815, 498, 185, 43);
+		btn_menu_principal.setBounds(811, 498, 185, 43);
 		
 		btn_menu_principal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -117,7 +121,7 @@ public class Inventario_General extends JFrame {
 		lbl_id.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_id.setFont(new Font("Arial", Font.BOLD, 13));
 		lbl_id.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_id.setBounds(10, 66, 89, 43);
+		lbl_id.setBounds(10, 66, 98, 43);
 		contentPane.add(lbl_id);
 		
 		txt_id = new JTextField();
@@ -126,7 +130,7 @@ public class Inventario_General extends JFrame {
 		txt_id.setEditable(false);
 		txt_id.setColumns(10);
 		txt_id.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		txt_id.setBounds(109, 65, 95, 43);
+		txt_id.setBounds(118, 65, 174, 43);
 		contentPane.add(txt_id);
 		
 		JLabel lblNewLabel_1 = new JLabel("CODIGO ROLLO");
@@ -137,6 +141,15 @@ public class Inventario_General extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		txt_codigo_rollo = new JTextField();
+		txt_codigo_rollo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
+			}
+		});
 		txt_codigo_rollo.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_codigo_rollo.setColumns(10);
 		txt_codigo_rollo.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -179,6 +192,15 @@ public class Inventario_General extends JFrame {
 		contentPane.add(lblNewLabel_1_3);
 		
 		txt_peso = new JTextField();
+		txt_peso.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
+			}
+		});
 		txt_peso.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_peso.setColumns(10);
 		txt_peso.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -205,16 +227,28 @@ public class Inventario_General extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				//CONDICONAL PARA REVISAR SI EL MATERIAL A INGRESADO CORRECTAMENTE
-				if(!"".equals(txt_codigo_rollo.getText()) && !"".equals(txt_nombre_tela.getText()) && !"".equals(txt_proveedor.getText()) && !"".equals(txt_peso.getText())
-				&& !"".equals(txt_caracteristicas.getText())) {
-					insertar_invetario();
-					JOptionPane.showMessageDialog(null, "MATERIAL AGREGADO CORRECTAMENTE");
-					limpiar_campos();
-					requestFocus();
-				}else {
-					JOptionPane.showMessageDialog(null, "ERROR, VERIFIQUE QUE TODOS LOS CAMPOS SE ENCUENTREN LLENOS");
-					requestFocus();
+				// CONDICIONAL PARA REVISAR SI EL MATERIAL HA SIDO INGRESADO CORRECTAMENTE
+				if (!"".equals(txt_codigo_rollo.getText()) && !"".equals(txt_nombre_tela.getText())
+				        && !"".equals(txt_proveedor.getText()) && !"".equals(txt_peso.getText())
+				        && !"".equals(txt_caracteristicas.getText()) && !"".equals(txt_ancho.getText())
+				        && !"".equals(txt_estilo.getText()) && !"".equals(txt_metros.getText())
+				        && !"".equals(txt_ancho.getText()) && !"".equals(txt_piezas.getText())) {
+
+				    // VERIFICAR SI EL CAMPO TXT_ID ESTÁ LLENO
+				    if (!"".equals(txt_id.getText())) {
+				        JOptionPane.showMessageDialog(null, "ERROR, YA EXISTE UN REGISTRO CON ESE ID EN LA BASE DE DATOS");
+				        limpiar_campos();
+				        requestFocus();
+				    } else {
+				        insertar_invetario();
+				        JOptionPane.showMessageDialog(null, "MATERIAL AGREGADO CORRECTAMENTE");
+				        limpiar_campos();
+				        requestFocus();
+				    }
+
+				} else {
+				    JOptionPane.showMessageDialog(null, "ERROR, VERIFIQUE QUE TODOS LOS CAMPOS SE ENCUENTREN LLENOS");
+				    requestFocus();
 				}
 				
 			}
@@ -235,24 +269,26 @@ public class Inventario_General extends JFrame {
 		});
 		btn_limpiar_campos.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_limpiar_campos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_limpiar_campos.setBounds(814, 174, 186, 43);
+		btn_limpiar_campos.setBounds(811, 174, 185, 43);
 		contentPane.add(btn_limpiar_campos);
 		
 		JButton btn_registro_de_entradas = new JButton("VER INVENTARIO GENERAL");
 		btn_registro_de_entradas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				Tabla_Inventario_General t = new Tabla_Inventario_General();
 				t.setVisible(true);
 				t.setLocationRelativeTo(null);
 				t.Listar_Inventario();
 				t.requestFocus();
 				requestFocus();
+				
 			}
 		});
 		btn_registro_de_entradas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_registro_de_entradas.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_registro_de_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_registro_de_entradas.setBounds(559, 336, 185, 43);
+		btn_registro_de_entradas.setBounds(554, 336, 195, 43);
 		contentPane.add(btn_registro_de_entradas);
 		
 		JButton btn_actualizar = new JButton("ACTUALIZAR");
@@ -283,7 +319,7 @@ public class Inventario_General extends JFrame {
 		btn_actualizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_actualizar.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_actualizar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_actualizar.setBounds(814, 336, 186, 43);
+		btn_actualizar.setBounds(810, 336, 186, 43);
 		contentPane.add(btn_actualizar);
 		
 		JButton btn_eliminar = new JButton("ELIMINAR REGISTRO");
@@ -330,7 +366,7 @@ public class Inventario_General extends JFrame {
 		btn_eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_eliminar.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_eliminar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_eliminar.setBounds(558, 498, 186, 43);
+		btn_eliminar.setBounds(554, 498, 195, 43);
 		contentPane.add(btn_eliminar);
 		
 		JLabel lblNewLabel_1_3_1 = new JLabel("METROS");
@@ -341,6 +377,15 @@ public class Inventario_General extends JFrame {
 		contentPane.add(lblNewLabel_1_3_1);
 		
 		txt_metros = new JTextField();
+		txt_metros.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
+			}
+		});
 		txt_metros.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_metros.setColumns(10);
 		txt_metros.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -369,6 +414,15 @@ public class Inventario_General extends JFrame {
 		contentPane.add(lblNewLabel_1_3_1_1);
 		
 		txt_ancho = new JTextField();
+		txt_ancho.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
+			}
+		});
 		txt_ancho.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_ancho.setColumns(10);
 		txt_ancho.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -383,6 +437,15 @@ public class Inventario_General extends JFrame {
 		contentPane.add(lblNewLabel_1_3_2_1);
 		
 		txt_piezas = new JTextField();
+		txt_piezas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+                if (!(c >= '0' && c <= '9')) {
+                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
+                }
+			}
+		});
 		txt_piezas.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_piezas.setColumns(10);
 		txt_piezas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -393,28 +456,28 @@ public class Inventario_General extends JFrame {
 		lblNewLabel_1_5_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_5_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_5_1.setBounds(214, 65, 183, 43);
+		lblNewLabel_1_5_1.setBounds(302, 65, 162, 43);
 		contentPane.add(lblNewLabel_1_5_1);
 		
 		lbl_fecha = new JLabel("");
 		lbl_fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_fecha.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_fecha.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_fecha.setBounds(407, 65, 195, 43);
+		lbl_fecha.setBounds(474, 65, 172, 43);
 		contentPane.add(lbl_fecha);
 		
 		JLabel lblNewLabel_1_5_2 = new JLabel("HORA DE ENTRADA");
 		lblNewLabel_1_5_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_5_2.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_5_2.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblNewLabel_1_5_2.setBounds(612, 65, 183, 43);
+		lblNewLabel_1_5_2.setBounds(656, 65, 162, 43);
 		contentPane.add(lblNewLabel_1_5_2);
 		
 		lbl_hora = new JLabel("");
 		lbl_hora.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_hora.setFont(new Font("Arial", Font.BOLD, 20));
 		lbl_hora.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_hora.setBounds(805, 65, 195, 43);
+		lbl_hora.setBounds(828, 65, 172, 43);
 		contentPane.add(lbl_hora);
 	}
 	
@@ -426,6 +489,10 @@ public class Inventario_General extends JFrame {
 		txt_nombre_tela.setText("");
 		txt_proveedor.setText("");
 		txt_peso.setText("");
+		txt_metros.setText("");
+		txt_estilo.setText("");
+		txt_ancho.setText("");
+		txt_piezas.setText("");
 		txt_caracteristicas.setText("");
 	}
 	
@@ -435,6 +502,10 @@ public class Inventario_General extends JFrame {
 		   in.setNombre_Tela(txt_nombre_tela.getText());
 		   in.setProveedor(txt_proveedor.getText());
 		   in.setPeso_total(txt_peso.getText());
+		   in.setMetros(txt_metros.getText());
+		   in.setEstilo(txt_estilo.getText());
+		   in.setAncho(txt_ancho.getText());
+		   in.setPiezas(txt_piezas.getText());
 		   in.setCaracteristicas(txt_caracteristicas.getText());
 		   in.setHora_de_Entrada(lbl_hora.getText());
 		   in.setFecha_Entrada(lbl_fecha.getText());

@@ -65,6 +65,10 @@ public class Inventario_DAO {
                   i.setNombre_Tela(rs.getString("Nombre_Tela"));
                   i.setProveedor(rs.getString("Proveedor"));
                   i.setPeso_total(rs.getString("Peso_Total"));
+                  i.setMetros(rs.getString("Metros"));
+                  i.setEstilo(rs.getString("Estilo"));
+                  i.setAncho(rs.getString("Ancho"));
+                  i.setPiezas(rs.getString("Piezas"));
               	  i.setCaracteristicas(rs.getString("Caracteristicas"));
               	  i.setFecha_Entrada(rs.getString("Fecha_Entrada"));
               	  i.setHora_de_Entrada(rs.getString("Hora_Entrada"));
@@ -81,7 +85,7 @@ public class Inventario_DAO {
     //ACTUALIAR UN VALOR DE LA TABLA POR MEDIO DEL UPDATE 
     public boolean Actualizar_Inventario_General(Inventario i) {
         String sql = "UPDATE grupo_indigo_puro_almacen_db.inventario_general " +
-                     "SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso_total=?, caracteristicas=? " +
+                     "SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso_total=?, metros=?, estilo=? , ancho=?, piezas=?, caracteristicas=? " +
                      "WHERE id=?";
         
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
@@ -89,8 +93,12 @@ public class Inventario_DAO {
             ps.setString(2, i.getNombre_Tela());
             ps.setString(3, i.getProveedor());
             ps.setString(4, i.getPeso_total());
-            ps.setString(5, i.getCaracteristicas());
-            ps.setInt(6, i.getId());
+            ps.setString(5, i.getMetros());
+            ps.setString(6, i.getEstilo());
+            ps.setString(7, i.getAncho());
+            ps.setString(8, i.getPiezas());
+            ps.setString(9, i.getCaracteristicas());
+            ps.setInt(10, i.getId());
             
             int filasActualizadas = ps.executeUpdate();
             
