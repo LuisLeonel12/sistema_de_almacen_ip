@@ -22,10 +22,12 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import base_de_datos.Inventario;
 import base_de_datos.Inventario_DAO;
 import interfaces.Inventario_General;
+
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -79,7 +81,15 @@ public class Tabla_Inventario_General extends JFrame {
 		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_menu_principal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				Inventario_General ig = new Inventario_General();
+				
+				ig.setVisible(true);
+	            ig.setLocationRelativeTo(null);
+	            ig.actualizar_Fecha();
+	            ig.actualizar_hora();
+	            ig.requestFocus();
+	            dispose();
+				
 			}
 		});
 		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 13));
@@ -100,9 +110,12 @@ public class Tabla_Inventario_General extends JFrame {
 		
 		tbl_inventario = new JTable();
 		tbl_inventario.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+			
+			Inventario_General ig = new Inventario_General();
+			
             int seleccionar = tbl_inventario.rowAtPoint(e.getPoint());
 				
             txt_id.setText(String.valueOf(tbl_inventario.getValueAt(seleccionar, 0)));
@@ -115,7 +128,10 @@ public class Tabla_Inventario_General extends JFrame {
             txt_estilo.setText(String.valueOf(tbl_inventario.getValueAt(seleccionar, 7)));
             txt_piezas.setText(String.valueOf(tbl_inventario.getValueAt(seleccionar, 8)));
             txt_caracteristicas.setText(String.valueOf(tbl_inventario.getValueAt(seleccionar, 9)));
-		     
+		    
+            ig.setVisible(true);
+            ig.setLocationRelativeTo(null);
+            
 		    dispose();
 		    requestFocus();
 				
@@ -137,11 +153,27 @@ public class Tabla_Inventario_General extends JFrame {
 		tbl_inventario.getColumnModel().getColumn(6).setPreferredWidth(90);
 		tbl_inventario.getColumnModel().getColumn(7).setPreferredWidth(90);
 		tbl_inventario.getColumnModel().getColumn(8).setPreferredWidth(90);
-		tbl_inventario.getColumnModel().getColumn(9).setPreferredWidth(130);
-		tbl_inventario.getColumnModel().getColumn(10).setPreferredWidth(115);
+		tbl_inventario.getColumnModel().getColumn(9).setPreferredWidth(145);
+		tbl_inventario.getColumnModel().getColumn(10).setPreferredWidth(125);
 		tbl_inventario.getColumnModel().getColumn(11).setPreferredWidth(100);
 		scrollPane.setViewportView(tbl_inventario);
 		tbl_inventario.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		
+		//CENTRAR LOS DATOS DE LA TABLA
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		tbl_inventario.getColumnModel().getColumn(0).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(1).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(2).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(3).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(4).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(5).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(6).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(7).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(8).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(9).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(10).setCellRenderer(renderer);
+		tbl_inventario.getColumnModel().getColumn(11).setCellRenderer(renderer);
 	}
 	
 	public void Listar_Inventario(){

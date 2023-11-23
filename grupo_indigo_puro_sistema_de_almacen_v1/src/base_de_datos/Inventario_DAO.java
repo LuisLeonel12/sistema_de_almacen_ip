@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexion.Conexion;
+import interfaces.Registro_de_Salidas;
 
 public class Inventario_DAO {
-
 	
 	//variables
     String sql;
@@ -124,6 +124,34 @@ public class Inventario_DAO {
             return false;
         }
     }
+    
+    
+    
+    public Inventario Buscar_Rollo (String cod) throws SQLException {
+    	
+    	Inventario i = new Inventario();
+    	
+    	String sql = "SELECT * FROM inventario_general WHERE codigo_rollo = ?";
+    	
+    	ps.setString(1, cod);
+    	
+    	rs = ps.executeQuery();
+    	
+    	if(rs.next()) {
+    		
+    		i.setNombre_Tela(rs.getString("nombre_tela"));
+    		i.setPiezas(rs.getString("piezas"));
+    		i.setMetros(rs.getString("metros"));
+    		
+    	}
+    	
+    	try {
 	
-	
+		} catch (Exception e) {
+			e.toString();
+		}
+    	return i;
+    	
+    }
+    
 }

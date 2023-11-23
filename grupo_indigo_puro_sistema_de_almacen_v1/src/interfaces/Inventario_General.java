@@ -101,7 +101,7 @@ public class Inventario_General extends JFrame {
 		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_menu_principal.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 13));
-		btn_menu_principal.setBounds(811, 498, 185, 43);
+		btn_menu_principal.setBounds(787, 498, 185, 43);
 		
 		btn_menu_principal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -256,7 +256,7 @@ public class Inventario_General extends JFrame {
 		});
 		btn_ingresar.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_ingresar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_ingresar.setBounds(554, 174, 195, 43);
+		btn_ingresar.setBounds(530, 174, 195, 43);
 		contentPane.add(btn_ingresar);
 		
 		JButton btn_limpiar_campos = new JButton("LIMPIAR CAMPOS");
@@ -269,7 +269,7 @@ public class Inventario_General extends JFrame {
 		});
 		btn_limpiar_campos.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_limpiar_campos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_limpiar_campos.setBounds(811, 174, 185, 43);
+		btn_limpiar_campos.setBounds(787, 174, 185, 43);
 		contentPane.add(btn_limpiar_campos);
 		
 		JButton btn_registro_de_entradas = new JButton("VER INVENTARIO GENERAL");
@@ -282,13 +282,14 @@ public class Inventario_General extends JFrame {
 				t.Listar_Inventario();
 				t.requestFocus();
 				requestFocus();
+				dispose();
 				
 			}
 		});
 		btn_registro_de_entradas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_registro_de_entradas.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_registro_de_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_registro_de_entradas.setBounds(554, 336, 195, 43);
+		btn_registro_de_entradas.setBounds(530, 336, 195, 43);
 		contentPane.add(btn_registro_de_entradas);
 		
 		JButton btn_actualizar = new JButton("ACTUALIZAR");
@@ -319,7 +320,7 @@ public class Inventario_General extends JFrame {
 		btn_actualizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_actualizar.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_actualizar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_actualizar.setBounds(810, 336, 186, 43);
+		btn_actualizar.setBounds(786, 336, 186, 43);
 		contentPane.add(btn_actualizar);
 		
 		JButton btn_eliminar = new JButton("ELIMINAR REGISTRO");
@@ -366,7 +367,7 @@ public class Inventario_General extends JFrame {
 		btn_eliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_eliminar.setFont(new Font("Arial", Font.BOLD, 12));
 		btn_eliminar.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_eliminar.setBounds(554, 498, 195, 43);
+		btn_eliminar.setBounds(530, 498, 195, 43);
 		contentPane.add(btn_eliminar);
 		
 		JLabel lblNewLabel_1_3_1 = new JLabel("METROS");
