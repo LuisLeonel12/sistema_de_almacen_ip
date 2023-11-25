@@ -37,6 +37,17 @@ public class Inventario {
 	    	this.Hora_de_Entrada = Hora_Entrada;
 	    }
 	    
+	     
+		public String getPeso_Total() {
+			return Peso_Total;
+		}
+
+
+		public void setPeso_Total(String peso_Total) {
+			Peso_Total = peso_Total;
+		}
+
+
 		public String getCodigo_Rollo() {
 			return Codigo_Rollo;
 		}

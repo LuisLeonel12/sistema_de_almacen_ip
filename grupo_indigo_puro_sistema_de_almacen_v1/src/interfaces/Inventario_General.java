@@ -303,9 +303,11 @@ public class Inventario_General extends JFrame {
 				    in.setNombre_Tela(txt_nombre_tela.getText());
 				    in.setProveedor(txt_proveedor.getText());
 				    in.setPeso_total(txt_peso.getText());
+				    in.setMetros(txt_metros.getText());
+				    in.setEstilo(txt_estilo.getText());
+				    in.setAncho(txt_ancho.getText());
+				    in.setPiezas(txt_piezas.getText());
 				    in.setCaracteristicas(txt_caracteristicas.getText());
-				    in.setFecha_Entrada(lbl_fecha.getText());
-				    in.setHora_de_Entrada(lbl_hora.getText());
 				    indao.Actualizar_Inventario_General(in);
 				    JOptionPane.showMessageDialog(null, "REGISTRO ACTUALIZADO");
 			    	limpiar_campos();

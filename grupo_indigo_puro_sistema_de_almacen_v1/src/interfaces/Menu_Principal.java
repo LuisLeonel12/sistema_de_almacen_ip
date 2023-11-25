@@ -37,6 +37,8 @@ public class Menu_Principal extends JFrame {
 	private JLabel lbl_fecha_actual;
 	private JLabel lbl_hora_actual;
 	
+	int item;
+	
 	String hora,minutos,segundos;
     Thread hilo;
 
@@ -107,7 +109,6 @@ public class Menu_Principal extends JFrame {
 				rs.setLocationRelativeTo(null);
 				rs.setVisible(true);
 				rs.requestFocus();
-				rs.actualizar_hora();
 				rs.actualizarFecha();
 				dispose();
 			}
@@ -190,7 +191,6 @@ public class Menu_Principal extends JFrame {
 				Registro_de_Salidas rs = new Registro_de_Salidas();
 				rs.setVisible(true);
 				rs.setLocationRelativeTo(null);
-				rs.actualizar_hora();
 				rs.actualizarFecha();
 				rs.requestFocus();
 				dispose();

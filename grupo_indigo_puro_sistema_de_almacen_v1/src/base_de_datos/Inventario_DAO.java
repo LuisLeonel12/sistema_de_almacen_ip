@@ -84,9 +84,7 @@ public class Inventario_DAO {
     
     //ACTUALIAR UN VALOR DE LA TABLA POR MEDIO DEL UPDATE 
     public boolean Actualizar_Inventario_General(Inventario i) {
-        String sql = "UPDATE grupo_indigo_puro_almacen_db.inventario_general " +
-                     "SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso_total=?, metros=?, estilo=? , ancho=?, piezas=?, caracteristicas=? " +
-                     "WHERE id=?";
+        String sql = "UPDATE inventario_general SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso_total=?, metros=?, estilo=?, ancho=?, piezas=?, caracteristicas=? WHERE id=?";
         
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
             ps.setString(1, i.getCodigo_Rollo());
@@ -109,6 +107,7 @@ public class Inventario_DAO {
         }
     }
     
+    
     //ELIMINAR DATOS DE LA TABLA POR MEIO DEL ID
     public boolean Eliminar_Inventario_General(int id) {
         String sql = "DELETE FROM grupo_indigo_puro_almacen_db.inventario_general WHERE id=?";
@@ -127,31 +126,26 @@ public class Inventario_DAO {
     
     
     
-    public Inventario Buscar_Rollo (String cod) throws SQLException {
-    	
-    	Inventario i = new Inventario();
-    	
-    	String sql = "SELECT * FROM inventario_general WHERE codigo_rollo = ?";
-    	
-    	ps.setString(1, cod);
-    	
-    	rs = ps.executeQuery();
-    	
-    	if(rs.next()) {
-    		
-    		i.setNombre_Tela(rs.getString("nombre_tela"));
-    		i.setPiezas(rs.getString("piezas"));
-    		i.setMetros(rs.getString("metros"));
-    		
-    	}
-    	
-    	try {
-	
-		} catch (Exception e) {
-			e.toString();
-		}
-    	return i;
-    	
+    public Inventario Buscar_Rollo(String cod) {
+        Inventario i = new Inventario();
+
+        String sql = "SELECT * FROM inventario_general WHERE codigo_rollo = ?";
+
+        try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
+            ps.setString(1, cod);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    i.setNombre_Tela(rs.getString("nombre_tela"));
+                    i.setPiezas(rs.getString("piezas"));
+                    i.setMetros(rs.getString("metros"));
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar el rollo en el inventario: " + ex.toString());
+        }
+
+        return i;
     }
     
 }
