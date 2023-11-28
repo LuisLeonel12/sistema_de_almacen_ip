@@ -54,7 +54,7 @@ public class Packing_List extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 930, 442);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 140, 0));
+		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		setContentPane(contentPane);

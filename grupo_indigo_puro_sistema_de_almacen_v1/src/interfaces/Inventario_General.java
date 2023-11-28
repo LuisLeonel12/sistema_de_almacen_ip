@@ -1,7 +1,6 @@
 package interfaces;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,13 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-
 import base_de_datos.Entradas;
 import base_de_datos.Entradas_DAO;
 import base_de_datos.Inventario;
 import base_de_datos.Inventario_DAO;
 import tablas.Tabla_Inventario_General;
-
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -84,7 +81,7 @@ public class Inventario_General extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1030, 646);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 140, 0));
+		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 
 		setContentPane(contentPane);
@@ -226,7 +223,6 @@ public class Inventario_General extends JFrame {
 		btn_ingresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 				// CONDICIONAL PARA REVISAR SI EL MATERIAL HA SIDO INGRESADO CORRECTAMENTE
 				if (!"".equals(txt_codigo_rollo.getText()) && !"".equals(txt_nombre_tela.getText())
 				        && !"".equals(txt_proveedor.getText()) && !"".equals(txt_peso.getText())
@@ -240,18 +236,23 @@ public class Inventario_General extends JFrame {
 				        limpiar_campos();
 				        requestFocus();
 				    } else {
-				        insertar_invetario();
-				        JOptionPane.showMessageDialog(null, "MATERIAL AGREGADO CORRECTAMENTE");
-				        limpiar_campos();
-				        requestFocus();
+				        // VERIFICAR SI EL CÓDIGO DE ROLLO YA EXISTE EN LA BASE DE DATOS
+				        if (indao.codigoRolloExiste(txt_codigo_rollo.getText())) {
+				            JOptionPane.showMessageDialog(null, "ERROR, YA EXISTE UN REGISTRO CON ESE CÓDIGO DE ROLLO EN LA BASE DE DATOS");
+				            limpiar_campos();
+				            requestFocus();
+				        } else {
+				            insertar_invetario();
+				            JOptionPane.showMessageDialog(null, "MATERIAL AGREGADO CORRECTAMENTE");
+				            limpiar_campos();
+				            requestFocus();
+				        }
 				    }
-
 				} else {
 				    JOptionPane.showMessageDialog(null, "ERROR, VERIFIQUE QUE TODOS LOS CAMPOS SE ENCUENTREN LLENOS");
 				    requestFocus();
-				}
-				
-			}
+				}	
+			 }
 			
 		});
 		btn_ingresar.setFont(new Font("Arial", Font.BOLD, 12));
@@ -313,7 +314,7 @@ public class Inventario_General extends JFrame {
 			    	limpiar_campos();
 			    	requestFocus();	
 				}else {
-					JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR REGISTRO");
+					JOptionPane.showMessageDialog(null, "ERROR, DEBE SELECCIONAR UN REGISTRO DE LA TABLA");
 					requestFocus(); 
 				}
 				
@@ -483,8 +484,7 @@ public class Inventario_General extends JFrame {
 		lbl_hora.setBounds(828, 65, 172, 43);
 		contentPane.add(lbl_hora);
 	}
-	
-	
+
 	//METODO PARA LIMPIAR CAMPOS
 	public void limpiar_campos() {
 		txt_id.setText("");

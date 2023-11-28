@@ -74,33 +74,13 @@ public class Menu_Principal extends JFrame {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Menu_Principal.class.getResource("/imagenes/casa.png")));
 		setTitle("MENU PRINCIPAL");
-		setBounds(100, 100, 861, 480);
+		setBounds(100, 100, 904, 546);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 140, 0));
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		contentPane.setBackground(new Color(135, 206, 235));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btn_entrada = new JButton("");
-		btn_entrada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btn_entrada.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/entrada.png")));
-		btn_entrada.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_entrada.setBounds(621, 261, 199, 139);
-		
-		btn_entrada.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Registro_de_Entradas re = new Registro_de_Entradas();
-				re.setVisible(true);
-				re.setLocationRelativeTo(null);
-				re.requestFocus();
-				re.actualizar_hora();
-				re.actualizarFecha();
-				dispose();
-			}
-		});
-		contentPane.add(btn_entrada);
 		
 		JButton btn_salida = new JButton("");
 		btn_salida.addActionListener(new ActionListener() {
@@ -116,14 +96,14 @@ public class Menu_Principal extends JFrame {
 		btn_salida.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_salida.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/salida.png")));
 		btn_salida.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_salida.setBounds(621, 72, 199, 139);
+		btn_salida.setBounds(663, 305, 199, 139);
 		contentPane.add(btn_salida);
 		
 		JButton btn_packing_list = new JButton("");
 		btn_packing_list.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_packing_list.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/packing.png")));
 		btn_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_packing_list.setBounds(22, 261, 199, 139);
+		btn_packing_list.setBounds(342, 305, 199, 139);
 		
 		btn_packing_list.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,42 +121,19 @@ public class Menu_Principal extends JFrame {
 		
 		lbl_hora_actual = new JLabel("");
 		lbl_hora_actual.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_hora_actual.setFont(new Font("Arial Black", Font.BOLD, 20));
+		lbl_hora_actual.setFont(new Font("Arial Black", Font.BOLD, 25));
 		lbl_hora_actual.setHorizontalTextPosition(SwingConstants.CENTER);
 		lbl_hora_actual.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_hora_actual.setBounds(324, 400, 199, 30);
+		lbl_hora_actual.setBounds(563, 224, 299, 42);
 		contentPane.add(lbl_hora_actual);
 		
 		lbl_fecha_actual = new JLabel("");
 		lbl_fecha_actual.setHorizontalTextPosition(SwingConstants.CENTER);
 		lbl_fecha_actual.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_fecha_actual.setFont(new Font("Arial Black", Font.BOLD, 20));
+		lbl_fecha_actual.setFont(new Font("Arial Black", Font.BOLD, 25));
 		lbl_fecha_actual.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_fecha_actual.setBounds(324, 211, 199, 30);
+		lbl_fecha_actual.setBounds(22, 224, 299, 42);
 		contentPane.add(lbl_fecha_actual);
-		
-		JLabel lbl_entradas = new JLabel("ENTRADAS");
-		lbl_entradas.setForeground(Color.BLACK);
-		lbl_entradas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		lbl_entradas.setFont(new Font("Arial", Font.BOLD, 14));
-		lbl_entradas.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_entradas.setBounds(621, 400, 199, 30);
-		
-		lbl_entradas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Registro_de_Entradas re = new Registro_de_Entradas();
-				re.setVisible(true);
-				re.setLocationRelativeTo(null);
-				re.actualizar_hora();
-				re.actualizarFecha();
-				re.requestFocus();
-				dispose();
-			}
-		});
-		
-		contentPane.add(lbl_entradas);
 		
 		JLabel lbl_salidas = new JLabel("SALIDAS");
 		lbl_salidas.setForeground(Color.BLACK);
@@ -197,7 +154,7 @@ public class Menu_Principal extends JFrame {
 			}
 		});
 		
-		lbl_salidas.setBounds(621, 211, 199, 30);
+		lbl_salidas.setBounds(663, 444, 199, 30);
 
 		
 		contentPane.add(lbl_salidas);
@@ -208,7 +165,7 @@ public class Menu_Principal extends JFrame {
 		lbl_packing_list.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_packing_list.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_packing_list.setBounds(22, 400, 199, 30);
+		lbl_packing_list.setBounds(342, 444, 199, 30);
 		
 		lbl_packing_list.addMouseListener(new MouseAdapter() {
 			@Override
@@ -227,7 +184,7 @@ public class Menu_Principal extends JFrame {
 		btn_base_de_datos.setIcon(new ImageIcon(Menu_Principal.class.getResource("/imagenes/inventario.png")));
 		btn_base_de_datos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		btn_base_de_datos.setBounds(22, 72, 199, 139);
+		btn_base_de_datos.setBounds(22, 305, 199, 139);
 		
 		btn_base_de_datos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -261,7 +218,7 @@ public class Menu_Principal extends JFrame {
 		lbl_base_de_datos.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_base_de_datos.setFont(new Font("Arial", Font.BOLD, 14));
 		lbl_base_de_datos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_base_de_datos.setBounds(22, 211, 199, 30);
+		lbl_base_de_datos.setBounds(22, 444, 199, 30);
 		contentPane.add(lbl_base_de_datos);
 		
 		JLabel lblMenuPrincipal = new JLabel("MENU PRINCIPAL");
@@ -275,7 +232,7 @@ public class Menu_Principal extends JFrame {
 		lblGrupoIndigoPuro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGrupoIndigoPuro.setFont(new Font("Arial", Font.BOLD, 16));
 		lblGrupoIndigoPuro.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lblGrupoIndigoPuro.setBounds(563, 11, 257, 50);
+		lblGrupoIndigoPuro.setBounds(563, 11, 299, 50);
 		contentPane.add(lblGrupoIndigoPuro);
 		
 		JLabel lbl_fecha_actual_1 = new JLabel("");
@@ -284,7 +241,7 @@ public class Menu_Principal extends JFrame {
 		lbl_fecha_actual_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_fecha_actual_1.setFont(new Font("Arial Black", Font.BOLD, 20));
 		lbl_fecha_actual_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_fecha_actual_1.setBounds(324, 72, 199, 139);
+		lbl_fecha_actual_1.setBounds(22, 85, 299, 139);
 		contentPane.add(lbl_fecha_actual_1);
 		
 		JLabel lbl_hora_actual_1 = new JLabel("");
@@ -293,7 +250,7 @@ public class Menu_Principal extends JFrame {
 		lbl_hora_actual_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_hora_actual_1.setFont(new Font("Arial Black", Font.BOLD, 20));
 		lbl_hora_actual_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
-		lbl_hora_actual_1.setBounds(324, 261, 199, 139);
+		lbl_hora_actual_1.setBounds(563, 85, 299, 139);
 		contentPane.add(lbl_hora_actual_1);
 	}
 	

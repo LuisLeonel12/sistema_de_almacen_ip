@@ -28,6 +28,7 @@ public class Entradas_DAO {
     //DefaultTableModel modelo = new DefaultTableModel();
     
     
+    
     public boolean registro_de_entradas_de_tela(Entradas e){
         sql = "INSERT INTO registro_de_entradas_de_tela(codigo_rollo,nombre_tela,proveedor,peso,caracteristicas,fecha_entrada,hora_entrada)  VALUES (?,?,?,?,?,?,?)";
         

@@ -1,6 +1,7 @@
 package base_de_datos;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -148,4 +149,30 @@ public class Inventario_DAO {
         return i;
     }
     
+    
+    public boolean codigoRolloExiste(String Rollo) {
+        String sql = "SELECT COUNT(*) FROM inventario_general WHERE codigo_rollo = ?";
+        try {
+            ps = Conexion.prepareStatement(sql);
+            ps.setString(1, Rollo);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return false;
+    }
 }

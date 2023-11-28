@@ -86,5 +86,18 @@ public class Comp extends JFrame {
 		btn_racks.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_racks.setBounds(401, 11, 192, 108);
 		contentPane.add(btn_racks);
+		
+		JButton btn_entrada = new JButton("");
+		btn_entrada.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_entrada.setBounds(401, 179, 199, 139);
+		contentPane.add(btn_entrada);
+		
+		JLabel lbl_entradas = new JLabel("ENTRADAS");
+		lbl_entradas.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_entradas.setForeground(Color.BLACK);
+		lbl_entradas.setFont(new Font("Arial", Font.BOLD, 14));
+		lbl_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		lbl_entradas.setBounds(401, 318, 199, 30);
+		contentPane.add(lbl_entradas);
 	}
 }

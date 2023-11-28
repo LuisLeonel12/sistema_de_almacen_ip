@@ -1,5 +1,6 @@
 package tablas;
 
+import diseño_pdf_excel.Excel;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ import static interfaces.Inventario_General.txt_piezas;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -27,12 +29,12 @@ import javax.swing.table.DefaultTableModel;
 import base_de_datos.Inventario;
 import base_de_datos.Inventario_DAO;
 import interfaces.Inventario_General;
-
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
 
@@ -69,10 +71,10 @@ public class Tabla_Inventario_General extends JFrame {
 	 */
 	public Tabla_Inventario_General() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1170, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 140, 0));
+		contentPane.setBackground(new Color(135, 206, 235));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -169,7 +171,8 @@ public class Tabla_Inventario_General extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				requestFocus();
-				
+				//JOptionPane.showMessageDialog(null,"REPORTE DE INVENTARIO GENERAL CREADO");
+				Excel.reporte();				
 			}
 		});
 		btn_menu_principal_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

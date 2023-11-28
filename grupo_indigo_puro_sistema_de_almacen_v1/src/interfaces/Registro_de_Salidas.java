@@ -1,39 +1,21 @@
 package interfaces;
 
+import diseño_pdf_excel.salida_de_tela;
 import java.awt.Color;
-import diseño_pdf_excel.Excel;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.itextpdf.text.Image;
-
 import base_de_datos.Inventario;
 import base_de_datos.Inventario_DAO;
-import base_de_datos.Salidas;
-import base_de_datos.Salidas_DAO;
-
 import java.awt.Font;
-import java.awt.JobAttributes;
-
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.JTextField;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
-
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,6 +24,7 @@ import java.awt.Toolkit;
 import java.awt.Cursor;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -88,10 +71,10 @@ public class Registro_de_Salidas extends JFrame {
 		setTitle("SALIDAS ");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Registro_de_Salidas.class.getResource("/imagenes/salidas.png")));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 1284, 650);
+		setBounds(100, 100, 1284, 686);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(255, 140, 0));
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		contentPane.setBackground(new Color(135, 206, 235));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -125,6 +108,8 @@ public class Registro_de_Salidas extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		txt_nombre = new JTextField();
+		txt_nombre.setEditable(false);
+		txt_nombre.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_nombre.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_nombre.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_nombre.setColumns(10);
@@ -139,6 +124,8 @@ public class Registro_de_Salidas extends JFrame {
 		contentPane.add(lblNewLabel_1_2);
 		
 		txt_piezas = new JTextField();
+		txt_piezas.setEditable(false);
+		txt_piezas.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_piezas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_piezas.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_piezas.setColumns(10);
@@ -156,7 +143,7 @@ public class Registro_de_Salidas extends JFrame {
 		btn_menu_principal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btn_menu_principal.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btn_menu_principal.setFont(new Font("Arial", Font.BOLD, 12));
-		btn_menu_principal.setBounds(278, 557, 163, 43);
+		btn_menu_principal.setBounds(82, 567, 163, 50);
 		
 		btn_menu_principal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -176,14 +163,14 @@ public class Registro_de_Salidas extends JFrame {
 		btnInventariDeEntradas_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnInventariDeEntradas_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnInventariDeEntradas_1.setFont(new Font("Arial", Font.BOLD, 12));
-		btnInventariDeEntradas_1.setBounds(545, 557, 163, 43);
+		btnInventariDeEntradas_1.setBounds(337, 567, 163, 50);
 		contentPane.add(btnInventariDeEntradas_1);
 		
 		JButton btnLimpiarCampos = new JButton("LIMPIAR CAMPOS");
 		btnLimpiarCampos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnLimpiarCampos.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		btnLimpiarCampos.setFont(new Font("Arial", Font.BOLD, 12));
-		btnLimpiarCampos.setBounds(824, 557, 163, 43);
+		btnLimpiarCampos.setBounds(582, 567, 163, 50);
 		
 		btnLimpiarCampos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -210,6 +197,8 @@ public class Registro_de_Salidas extends JFrame {
 		contentPane.add(lblNewLabel_1_2_1);
 		
 		txt_metros = new JTextField();
+		txt_metros.setEditable(false);
+		txt_metros.setHorizontalAlignment(SwingConstants.CENTER);
 		txt_metros.setFont(new Font("Arial", Font.BOLD, 13));
 		txt_metros.setColumns(10);
 		txt_metros.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -259,11 +248,18 @@ public class Registro_de_Salidas extends JFrame {
 		contentPane.add(scrollPane);
 		
 		tbl_salidas = new JTable();
+		
+        DefaultTableCellRenderer centradoRenderer = new DefaultTableCellRenderer();
+        centradoRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        for (int i = 0; i < tbl_salidas.getColumnCount(); i++) {
+            tbl_salidas.getColumnModel().getColumn(i).setCellRenderer(centradoRenderer);
+        }
+		tbl_salidas.setFont(new Font("Arial", Font.BOLD, 12));
 		tbl_salidas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		tbl_salidas.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		tbl_salidas.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
 			},
 			new String[] {
 				"<html><center>CODIGO ROLLO</html></center>", "<html><center>NOMBRE TELA</html></center>", "<html><center>CANTIDAD</html></center>", "<html><center>METROS</html></center><html><center>ID</html></center>", "<html><center>FECHA DE SALIDA</html></center><html><center>FECHA DE SALIDA</html></center>"
@@ -334,6 +330,38 @@ public class Registro_de_Salidas extends JFrame {
 		txt_cantidad.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		txt_cantidad.setBounds(307, 119, 182, 43);
 		contentPane.add(txt_cantidad);
+		
+		JButton btn_excel = new JButton("");
+		btn_excel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+		    // LLAMANDO EL REPORTE DE EXCEL
+		    
+				
+			}
+		});
+		btn_excel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_excel.setIcon(new ImageIcon(Registro_de_Salidas.class.getResource("/imagenes/excel.png")));
+		btn_excel.setFont(new Font("Arial", Font.BOLD, 12));
+		btn_excel.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_excel.setBounds(846, 564, 107, 53);
+		contentPane.add(btn_excel);
+		
+		JButton btn_excel_1 = new JButton("");
+		btn_excel_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			//LLAMANDO EL METODO QUE SE ENCARGA DE GENERAR EL PDF
+			
+				
+			}
+		});
+		btn_excel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btn_excel_1.setIcon(new ImageIcon(Registro_de_Salidas.class.getResource("/imagenes/pdf.png")));
+		btn_excel_1.setFont(new Font("Arial", Font.BOLD, 12));
+		btn_excel_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_excel_1.setBounds(1056, 564, 107, 53);
+		contentPane.add(btn_excel_1);
 	}
 	    
 	    public void actualizarFecha() {
@@ -351,6 +379,10 @@ public class Registro_de_Salidas extends JFrame {
 			txt_nombre.setText("");
 			txt_piezas.setText("");
 			txt_metros.setText("");
+		}
+		
+		public void bloqueo_campos() {
+			
 		}
 	}
 
