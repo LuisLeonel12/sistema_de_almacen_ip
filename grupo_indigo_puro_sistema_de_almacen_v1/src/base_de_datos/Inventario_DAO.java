@@ -37,7 +37,7 @@ public class Inventario_DAO {
             ps.setString(5, in.getMetros());
             ps.setString(6, in.getEstilo());
             ps.setString(7, in.getAncho());
-            ps.setString(8, in.getPiezas());
+            ps.setInt(8, in.getPiezas());
             ps.setString(9, in.getCaracteristicas());
             ps.setString(10, in.getFecha_Entrada());
             ps.setString(11, in.getHora_de_Entrada());
@@ -69,7 +69,7 @@ public class Inventario_DAO {
                   i.setMetros(rs.getString("Metros"));
                   i.setEstilo(rs.getString("Estilo"));
                   i.setAncho(rs.getString("Ancho"));
-                  i.setPiezas(rs.getString("Piezas"));
+                  i.setPiezas(rs.getInt("Piezas"));
               	  i.setCaracteristicas(rs.getString("Caracteristicas"));
               	  i.setFecha_Entrada(rs.getString("Fecha_Entrada"));
               	  i.setHora_de_Entrada(rs.getString("Hora_Entrada"));
@@ -95,7 +95,7 @@ public class Inventario_DAO {
             ps.setString(5, i.getMetros());
             ps.setString(6, i.getEstilo());
             ps.setString(7, i.getAncho());
-            ps.setString(8, i.getPiezas());
+            ps.setInt(8, i.getPiezas());
             ps.setString(9, i.getCaracteristicas());
             ps.setInt(10, i.getId());
             
@@ -138,8 +138,10 @@ public class Inventario_DAO {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     i.setNombre_Tela(rs.getString("nombre_tela"));
-                    i.setPiezas(rs.getString("piezas"));
+                    i.setPiezas(rs.getInt("piezas"));
                     i.setMetros(rs.getString("metros"));
+                    i.setAncho(rs.getString("ancho"));
+                    i.setPeso_total(rs.getString("peso_total"));
                 }
             }
         } catch (SQLException ex) {
@@ -175,4 +177,25 @@ public class Inventario_DAO {
         
         return false;
     }
+    
+    
+    public boolean Actualizar_Stock(int can, String cod) {
+        sql = "UPDATE inventario_general SET piezas=? WHERE codigo_rollo=?";
+
+        try {
+            ps = Conexion.prepareStatement(sql);
+            ps.setInt(1, can);  
+            ps.setString(2, cod);
+            ps.execute();
+            
+            ps.close();
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
 }

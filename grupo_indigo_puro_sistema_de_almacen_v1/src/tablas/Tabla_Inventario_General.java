@@ -37,6 +37,7 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.ImageIcon;
+import java.awt.Dimension;
 
 public class Tabla_Inventario_General extends JFrame {
 
@@ -74,7 +75,7 @@ public class Tabla_Inventario_General extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1170, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(135, 206, 235));
+		contentPane.setBackground(new Color(140, 159, 176));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -102,16 +103,20 @@ public class Tabla_Inventario_General extends JFrame {
 		
 		JLabel lblRegistroDeEntradas = new JLabel("INVENTARIO GENERAL");
 		lblRegistroDeEntradas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRegistroDeEntradas.setFont(new Font("Arial", Font.BOLD, 16));
+		lblRegistroDeEntradas.setFont(new Font("Arial Black", Font.BOLD, 20));
 		lblRegistroDeEntradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		lblRegistroDeEntradas.setBounds(169, 13, 812, 53);
 		contentPane.add(lblRegistroDeEntradas);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setSize(new Dimension(10, 10));
 		scrollPane.setBounds(10, 77, 1134, 573);
 		contentPane.add(scrollPane);
 		
 		tbl_inventario = new JTable();
+		tbl_inventario.setRowMargin(2);
+		tbl_inventario.setRowHeight(25);
+		tbl_inventario.setFont(new Font("Arial", Font.BOLD, 12));
 		tbl_inventario.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		tbl_inventario.addMouseListener(new MouseAdapter() {
 			
@@ -163,7 +168,7 @@ public class Tabla_Inventario_General extends JFrame {
 		tbl_inventario.getColumnModel().getColumn(10).setPreferredWidth(125);
 		tbl_inventario.getColumnModel().getColumn(11).setPreferredWidth(100);
 		scrollPane.setViewportView(tbl_inventario);
-		tbl_inventario.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		tbl_inventario.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		
 		JButton btn_menu_principal_1 = new JButton("");
 		btn_menu_principal_1.setIcon(new ImageIcon(Tabla_Inventario_General.class.getResource("/imagenes/excel.png")));
@@ -182,8 +187,11 @@ public class Tabla_Inventario_General extends JFrame {
 		contentPane.add(btn_menu_principal_1);
 		
 		//CENTRAR LOS DATOS DE LA TABLA
-		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < tbl_inventario.getColumnCount(); i++) {
+            tbl_inventario.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 		
 	}
 	

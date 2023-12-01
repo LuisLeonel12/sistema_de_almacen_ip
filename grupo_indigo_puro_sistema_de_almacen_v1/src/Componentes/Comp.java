@@ -99,5 +99,18 @@ public class Comp extends JFrame {
 		lbl_entradas.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		lbl_entradas.setBounds(401, 318, 199, 30);
 		contentPane.add(lbl_entradas);
+		
+		JButton btn_packing_list = new JButton("");
+		btn_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		btn_packing_list.setBounds(623, 11, 199, 139);
+		contentPane.add(btn_packing_list);
+		
+		JLabel lbl_packing_list = new JLabel("PACKING LIST");
+		lbl_packing_list.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_packing_list.setForeground(Color.BLACK);
+		lbl_packing_list.setFont(new Font("Arial", Font.BOLD, 14));
+		lbl_packing_list.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		lbl_packing_list.setBounds(623, 150, 199, 30);
+		contentPane.add(lbl_packing_list);
 	}
 }

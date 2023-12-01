@@ -81,7 +81,7 @@ public class Inventario_General extends JFrame {
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1030, 646);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(135, 206, 235));
+		contentPane.setBackground(new Color(192, 227, 255));
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 
 		setContentPane(contentPane);
@@ -153,7 +153,7 @@ public class Inventario_General extends JFrame {
 		txt_codigo_rollo.setBounds(194, 120, 288, 43);
 		contentPane.add(txt_codigo_rollo);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("NOMBRE");
+		JLabel lblNewLabel_1_1 = new JLabel("NOMBRE DE TELA");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 13));
 		lblNewLabel_1_1.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
@@ -192,10 +192,11 @@ public class Inventario_General extends JFrame {
 		txt_peso.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
-                if (!(c >= '0' && c <= '9')) {
-                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
-                }
+			    char c = e.getKeyChar();
+
+			    if (!((c >= '0' && c <= '9') || c == '.')) {
+			        e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES UN DÍGITO O UN PUNTO DECIMAL
+			    }
 			}
 		});
 		txt_peso.setFont(new Font("Arial", Font.BOLD, 13));
@@ -307,7 +308,7 @@ public class Inventario_General extends JFrame {
 				    in.setMetros(txt_metros.getText());
 				    in.setEstilo(txt_estilo.getText());
 				    in.setAncho(txt_ancho.getText());
-				    in.setPiezas(txt_piezas.getText());
+				    in.setPiezas(Integer.parseInt(txt_piezas.getText()));
 				    in.setCaracteristicas(txt_caracteristicas.getText());
 				    indao.Actualizar_Inventario_General(in);
 				    JOptionPane.showMessageDialog(null, "REGISTRO ACTUALIZADO");
@@ -385,9 +386,10 @@ public class Inventario_General extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-                if (!(c >= '0' && c <= '9')) {
-                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
-                }
+
+			    if (!((c >= '0' && c <= '9') || c == '.')) {
+			        e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES UN DÍGITO O UN PUNTO DECIMAL
+			    }
 			}
 		});
 		txt_metros.setFont(new Font("Arial", Font.BOLD, 13));
@@ -422,9 +424,10 @@ public class Inventario_General extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c = e.getKeyChar();
-                if (!(c >= '0' && c <= '9')) {
-                    e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES ENTERO
-                }
+
+			    if (!((c >= '0' && c <= '9') || c == '.')) {
+			        e.consume(); // CONSUMIR EL EVENTO SI EL CARACTER NO ES UN DÍGITO O UN PUNTO DECIMAL
+			    }
 			}
 		});
 		txt_ancho.setFont(new Font("Arial", Font.BOLD, 13));
@@ -508,7 +511,7 @@ public class Inventario_General extends JFrame {
 		   in.setMetros(txt_metros.getText());
 		   in.setEstilo(txt_estilo.getText());
 		   in.setAncho(txt_ancho.getText());
-		   in.setPiezas(txt_piezas.getText());
+		   in.setPiezas(Integer.parseInt(txt_piezas.getText()));
 		   in.setCaracteristicas(txt_caracteristicas.getText());
 		   in.setHora_de_Entrada(lbl_hora.getText());
 		   in.setFecha_Entrada(lbl_fecha.getText());

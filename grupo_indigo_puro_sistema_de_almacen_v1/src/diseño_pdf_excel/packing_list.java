@@ -332,5 +332,4 @@ public class packing_list {
 			      
 		}
 	
-	
 }

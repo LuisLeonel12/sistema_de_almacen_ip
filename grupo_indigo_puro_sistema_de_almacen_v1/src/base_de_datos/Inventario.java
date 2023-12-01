@@ -11,7 +11,7 @@ public class Inventario {
 	    private String Metros;
 	    private String Estilo;
 	    private String Ancho;
-	    private String Piezas;
+	    private int Piezas;
 	    private String Caracteristicas;
 	    private String Fecha_Entrada;
 	    private String Hora_de_Entrada;
@@ -23,7 +23,7 @@ public class Inventario {
 	    
 	    
 	    //contructor con la clase inicializada
-	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,String Metros,String Estilo,String Ancho,String Piezas ,String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
+	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,String Metros,String Estilo,String Ancho,int Piezas ,String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
 	    	this.Id= Id;
 	    	this.Codigo_Rollo= Codigo_Rollo;
 	    	this.Nombre_Tela = Nombre_Tela;
@@ -82,12 +82,12 @@ public class Inventario {
 		}
 
 
-		public String getPiezas() {
+		public int getPiezas() {
 			return Piezas;
 		}
 
 
-		public void setPiezas(String piezas) {
+		public void setPiezas(int piezas) {
 			this.Piezas = piezas;
 		}
 
