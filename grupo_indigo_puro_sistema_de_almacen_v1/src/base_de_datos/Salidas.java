@@ -15,13 +15,13 @@ public class Salidas {
 //		    private String Caracteristicas;
 //		    private String Fecha_Entrada;
 //		    private String Hora_de_Entrada;
-//		    
+//
 //		    //constructor vacio
 //		    public Salidas() {
-//		    	
+//
 //		    }
-//		    
-//		    
+//
+//
 //		    //contructor con la clase inicializada
 //		    public Salidas(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,String Metros,String Estilo,String Ancho,String Piezas ,String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
 //		    	this.Id= Id;
@@ -36,7 +36,7 @@ public class Salidas {
 //		    	this.Fecha_Entrada = Fecha_Entrada;
 //		    	this.Hora_de_Entrada = Hora_Entrada;
 //		    }
-//		    
+//
 //			public String getCodigo_Rollo() {
 //				return Codigo_Rollo;
 //			}
@@ -165,5 +165,5 @@ public class Salidas {
 //			public void setHora_de_Entrada(String hora_de_Entrada) {
 //				this.Hora_de_Entrada = hora_de_Entrada;
 //			}
-	
+
 }

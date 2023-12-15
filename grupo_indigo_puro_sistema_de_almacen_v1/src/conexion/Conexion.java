@@ -1,9 +1,9 @@
+
 package conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class Conexion {
 
@@ -16,7 +16,7 @@ public class Conexion {
         con = null;
 
         try {
-            con = (Connection) DriverManager.getConnection(URL, USER, PASS);
+            con = DriverManager.getConnection(URL, USER, PASS);
 
             if (con != null) {
                 //MENSAJE QUE SE ENCARGA DE COMPROBAR SI LA CONEXION ESTA LISTA
@@ -29,24 +29,22 @@ public class Conexion {
         return con;
     }
 
-    public void cerrarConexion() {
+    public static void cerrarConexion() {
         try {
             if (con != null && !con.isClosed()) {
                 con.close();
-                System.out.println("Conexión cerrada.");
+                //System.out.println("Conexión cerrada.");
             }
         } catch (SQLException e) {
-            System.out.println("Error al cerrar la conexión: " + e.toString());
+            //System.out.println("Error al cerrar la conexión: " + e.toString());
         }
     }
 
     public static void main(String[] args) {
         Conexion con = new Conexion();
         con.Conectar();
-        
-        // CERRAR LA CONEXION AL FINALIZAR
-        con.cerrarConexion();
-    	}
-	
-  	}
+
+        Conexion.cerrarConexion();
+    }
+}
 

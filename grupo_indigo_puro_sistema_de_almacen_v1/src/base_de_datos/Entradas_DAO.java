@@ -1,20 +1,13 @@
 package base_de_datos;
 
-import conexion.Conexion;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
-import com.mysql.cj.jdbc.CallableStatement;
+import conexion.Conexion;
 
 public class Entradas_DAO {
 
@@ -26,12 +19,12 @@ public class Entradas_DAO {
     Connection Conexion = con.Conectar();
     ResultSet rs;
     //DefaultTableModel modelo = new DefaultTableModel();
-    
-    
-    
+
+
+
     public boolean registro_de_entradas_de_tela(Entradas e){
         sql = "INSERT INTO registro_de_entradas_de_tela(codigo_rollo,nombre_tela,proveedor,peso,caracteristicas,fecha_entrada,hora_entrada)  VALUES (?,?,?,?,?,?,?)";
-        
+
         try {
             ps = Conexion.prepareStatement(sql);
             ps.setString(1,e.getCodigo_Rollo());
@@ -47,20 +40,20 @@ public class Entradas_DAO {
             System.out.println(e1.toString());
             return false;
         }
-    
+
     }
-    
-    
-    public List Listar_registro_entradas(){
-        List<Entradas> listae = new ArrayList();
+
+
+    public List<Entradas> Listar_registro_entradas(){
+        List<Entradas> listae = new ArrayList<>();
         sql = "SELECT * FROM registro_de_entradas_de_tela";
-        
+
           try {
               ps = Conexion.prepareStatement(sql);
               rs = ps.executeQuery();
-              
+
               while (rs.next()) {
-              
+
             	  Entradas e = new Entradas();
                   e.setId(rs.getInt("Id"));
                   e.setCodigo_Rollo(rs.getString("Codigo_Rollo"));
@@ -72,19 +65,19 @@ public class Entradas_DAO {
               	  e.setHora_de_Entrada(rs.getString("Hora_Entrada"));
                   listae.add(e);
               }
-              
+
           } catch (SQLException e) {
               System.out.println(e.toString());
           }
         return listae;
           }
-    
-    
-    
+
+
+
 
     public boolean actualizarEntradaTela(Entradas e) {
         String sql = "UPDATE registro_de_entradas_de_tela SET codigo_rollo=?, nombre_tela=?, proveedor=?, peso=?, caracteristicas=? WHERE id=?";
-        
+
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
             ps.setString(1, e.getCodigo_Rollo());
             ps.setString(2, e.getNombre_Tela());
@@ -92,9 +85,9 @@ public class Entradas_DAO {
             ps.setString(4, e.getPeso());
             ps.setString(5, e.getCaracteristicas());
             ps.setInt(6, e.getId());
-            
+
             int filasActualizadas = ps.executeUpdate();
-            
+
             return filasActualizadas > 0;
         } catch (SQLException ex) {
             System.out.println("Error al actualizar la entrada de tela: " + ex.toString());
@@ -105,21 +98,16 @@ public class Entradas_DAO {
 
     public boolean eliminarEntradaTela(int id) {
         String sql = "DELETE FROM registro_de_entradas_de_tela WHERE id=?";
-        
+
         try (PreparedStatement ps = Conexion.prepareStatement(sql)) {
             ps.setInt(1, id);
-            
+
             int filasEliminadas = ps.executeUpdate();
-            
+
             return filasEliminadas > 0;
         } catch (SQLException ex) {
             System.out.println("Error al eliminar la entrada de tela: " + ex.toString());
             return false;
         }
     }
-    
-    
-    
-    
-	
 }

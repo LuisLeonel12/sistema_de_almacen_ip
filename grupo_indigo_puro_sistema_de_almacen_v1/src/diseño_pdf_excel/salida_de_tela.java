@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
+
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -25,15 +27,16 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import conexion.Conexion;
 
 public class salida_de_tela {
 
 	public static void reporte_salida() {
-		 
+
 		Workbook book = new XSSFWorkbook();
         Sheet sheet = book.createSheet("REPORTE DE SALIDA");
-        
+
         try {
 
             CellStyle tituloEstilo = book.createCellStyle();
@@ -41,7 +44,7 @@ public class salida_de_tela {
             tituloEstilo.setVerticalAlignment(VerticalAlignment.CENTER);
             tituloEstilo.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
             tituloEstilo.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-            
+
             Font fuenteTitulo = book.createFont();
             fuenteTitulo.setFontName("Arial");
             fuenteTitulo.setBold(true);
@@ -66,7 +69,7 @@ public class salida_de_tela {
             headerStyle.setBorderRight(BorderStyle.THIN);
             headerStyle.setBorderTop(BorderStyle.THIN);
             headerStyle.setAlignment(HorizontalAlignment.CENTER);
-            
+
             Font font = book.createFont();
             font.setFontName("Arial");
             font.setBold(true);
@@ -95,7 +98,7 @@ public class salida_de_tela {
         	  Conexion con = new Conexion();
         	  Connection conexion = con.Conectar();
         	  ResultSet rs;
-            
+
             ps = conexion.prepareStatement("select * from inventario_general;");
             rs = ps.executeQuery();
 
@@ -141,6 +144,6 @@ public class salida_de_tela {
         } catch (IOException | SQLException ex) {
             Logger.getLogger(Excel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 		}
 }

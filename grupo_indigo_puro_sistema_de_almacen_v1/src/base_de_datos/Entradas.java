@@ -12,13 +12,13 @@ public class Entradas {
     private String Caracteristicas;
     private String Fecha_Entrada;
     private String Hora_de_Entrada;
-    
+
     //constructor vacio
     public Entradas() {
-    	
+
     }
-    
-    
+
+
     //contructor con la clase inicializada
     public Entradas(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso, String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
     	this.Id= Id;
@@ -32,8 +32,8 @@ public class Entradas {
     }
 
 
-    
-    
+
+
 	public String getCodigo_Rollo() {
 		return Codigo_Rollo;
 	}
@@ -122,9 +122,4 @@ public class Entradas {
 	public void setHora_de_Entrada(String hora_de_Entrada) {
 		this.Hora_de_Entrada = hora_de_Entrada;
 	}
-    
-    
-    
- 
-	
 }

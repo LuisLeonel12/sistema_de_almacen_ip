@@ -8,36 +8,58 @@ public class Inventario {
 	    private String Nombre_Tela;
 	    private String Proveedor;
 	    private String Peso_Total;
-	    private String Metros;
+	    private Double Metros;
+	    private Double Metros_Totales;
 	    private String Estilo;
 	    private String Ancho;
-	    private int Piezas;
 	    private String Caracteristicas;
+	    private String Ubicacion;
 	    private String Fecha_Entrada;
 	    private String Hora_de_Entrada;
-	    
+
 	    //constructor vacio
 	    public Inventario() {
-	    	
+
 	    }
-	    
-	    
+
+
 	    //contructor con la clase inicializada
-	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,String Metros,String Estilo,String Ancho,int Piezas ,String Caracteristicas, String Fecha_Entrada, String Hora_Entrada) {
+	    public Inventario(int Id ,String Codigo_Rollo, String Nombre_Tela, String Proveedor, String Peso_Total,Double Metros,Double Metros_Totales,String Estilo,String Ancho ,String Caracteristicas,String Ubicacion, String Fecha_Entrada, String Hora_Entrada) {
 	    	this.Id= Id;
 	    	this.Codigo_Rollo= Codigo_Rollo;
 	    	this.Nombre_Tela = Nombre_Tela;
 	    	this.Proveedor = Proveedor;
 	    	this.Metros = Metros;
+	    	this.Metros_Totales = Metros_Totales;
 	    	this.Estilo = Estilo;
 	    	this.Ancho = Ancho;
-	    	this.Piezas = Piezas;
 	    	this.Caracteristicas = Caracteristicas;
+	    	this.Ubicacion = Ubicacion;
 	    	this.Fecha_Entrada = Fecha_Entrada;
 	    	this.Hora_de_Entrada = Hora_Entrada;
 	    }
-	    
-	     
+
+
+		public String getUbicacion() {
+			return Ubicacion;
+		}
+
+
+		public void setUbicacion(String ubicacion) {
+			Ubicacion = ubicacion;
+		}
+
+
+		public Double getMetros_Totales() {
+			return Metros_Totales;
+		}
+
+
+		public void setMetros_Totales(Double metros_Totales) {
+			Metros_Totales = metros_Totales;
+		}
+
+
 		public String getPeso_Total() {
 			return Peso_Total;
 		}
@@ -52,12 +74,12 @@ public class Inventario {
 			return Codigo_Rollo;
 		}
 
-		public String getMetros() {
+		public Double getMetros() {
 			return Metros;
 		}
 
 
-		public void setMetros(String metros) {
+		public void setMetros(Double metros) {
 			this.Metros = metros;
 		}
 
@@ -79,16 +101,6 @@ public class Inventario {
 
 		public void setAncho(String ancho) {
 			this.Ancho = ancho;
-		}
-
-
-		public int getPiezas() {
-			return Piezas;
-		}
-
-
-		public void setPiezas(int piezas) {
-			this.Piezas = piezas;
 		}
 
 
@@ -176,5 +188,5 @@ public class Inventario {
 		public void setHora_de_Entrada(String hora_de_Entrada) {
 			this.Hora_de_Entrada = hora_de_Entrada;
 		}
-	  
+
 }
